@@ -45,6 +45,10 @@ export const routes: Routes = [
                 path: 'dashboard',
                 loadChildren: () => import('./pages/matriculacion/dashboards/dashboard.module').then(m => m.DashboardModule)
             },
+            {
+                path: 'vinculacion',
+                loadChildren: () => import('./pages/vinculacion/vinculacion.module').then(m => m.VinculacionModule)
+            },
         ]
     },
     {
