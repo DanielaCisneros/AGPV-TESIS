@@ -2,11 +2,12 @@
     <div class="p-grid">
         <div class="p-col-12">
             <div class="ui-messages ui-widget ui-corner-all ui-messages-success"
-                 style="margin: 0 0 1em 0; display: block">
+                style="margin: 0 0 1em 0; display: block">
                 <ul>
                     <li>
                         <span class="ui-messages-icon pi pi-check"></span>
-                        <span class="ui-messages-summary" style="font-size:16px">Mirage provides a theme for all 80+ PrimeNG Components. This page contains samples of the commonly
+                        <span class="ui-messages-summary" style="font-size:16px">Mirage provides a theme for all 80+
+                            PrimeNG Components. This page contains samples of the commonly
                             used components for demo purposes.</span>
                     </li>
                 </ul>
@@ -20,7 +21,7 @@
                         <label for="input">Input</label>
                     </div>
                     <div class="p-col-12 p-md-4">
-                        <input id="input" type="text" pInputText/>
+                        <input id="input" type="text" pInputText />
                     </div>
 
                     <div class="p-col-12 p-md-2">
@@ -42,8 +43,8 @@
                     </div>
                     <div class="p-col-12 p-md-4">
                         <p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountries"
-                                        (completeMethod)="filterCountry($event)" field="name"
-                                        placeholder="Countries" [minLength]="1"></p-autoComplete>
+                            (completeMethod)="filterCountry($event)" field="name" placeholder="Countries"
+                            [minLength]="1"></p-autoComplete>
                     </div>
 
                     <div class="p-col-12 p-md-2">
@@ -57,7 +58,7 @@
                         <label for="password">Password</label>
                     </div>
                     <div class="p-col-12 p-md-4">
-                        <input id="password" pPassword type="password" [feedback]="false"/>
+                        <input id="password" pPassword type="password" [feedback]="false" />
                     </div>
 
                     <div class="p-col-12 p-md-2">
@@ -78,8 +79,8 @@
                         <label for="multiselect">MultiSelect</label>
                     </div>
                     <div class="p-col-12 p-md-4">
-                        <p-multiSelect id="multiselect" [options]="carOptions"
-                                       [(ngModel)]="selectedMultiSelectCars"></p-multiSelect>
+                        <p-multiSelect id="multiselect" [options]="carOptions" [(ngModel)]="selectedMultiSelectCars">
+                        </p-multiSelect>
                     </div>
 
                     <div class="p-col-12 p-md-2">
@@ -94,16 +95,16 @@
                     <div class="p-col-12 p-md-4">
                         <div class="p-grid">
                             <div class="p-col-12">
-                                <p-checkbox name="cg" value="Ultima" label="Ultima"
-                                            [(ngModel)]="checkboxValues"></p-checkbox>
+                                <p-checkbox name="cg" value="Ultima" label="Ultima" [(ngModel)]="checkboxValues">
+                                </p-checkbox>
                             </div>
                             <div class="p-col-12">
-                                <p-checkbox name="cg" value="Icarus" label="Icarus"
-                                            [(ngModel)]="checkboxValues"></p-checkbox>
+                                <p-checkbox name="cg" value="Icarus" label="Icarus" [(ngModel)]="checkboxValues">
+                                </p-checkbox>
                             </div>
                             <div class="p-col-12">
-                                <p-checkbox name="cg" value="Omega" label="Omega"
-                                            [(ngModel)]="checkboxValues"></p-checkbox>
+                                <p-checkbox name="cg" value="Omega" label="Omega" [(ngModel)]="checkboxValues">
+                                </p-checkbox>
                             </div>
                         </div>
                     </div>
@@ -114,16 +115,16 @@
                     <div class="p-col-12 p-md-4">
                         <div class="p-grid">
                             <div class="p-col-12">
-                                <p-radioButton name="rg" value="Ultima" label="Ultima"
-                                               [(ngModel)]="radioValue"></p-radioButton>
+                                <p-radioButton name="rg" value="Ultima" label="Ultima" [(ngModel)]="radioValue">
+                                </p-radioButton>
                             </div>
                             <div class="p-col-12">
-                                <p-radioButton name="rg" value="Icarus" label="Icarus"
-                                               [(ngModel)]="radioValue"></p-radioButton>
+                                <p-radioButton name="rg" value="Icarus" label="Icarus" [(ngModel)]="radioValue">
+                                </p-radioButton>
                             </div>
                             <div class="p-col-12">
-                                <p-radioButton name="rg" value="Omega" label="Omega"
-                                               [(ngModel)]="radioValue"></p-radioButton>
+                                <p-radioButton name="rg" value="Omega" label="Omega" [(ngModel)]="radioValue">
+                                </p-radioButton>
                             </div>
                         </div>
                     </div>
@@ -161,7 +162,7 @@
                     </div>
                     <div class="p-col-12 p-md-4">
                         <button type="button" label="Login" icon="pi pi-external-link" (click)="dialogVisible=true"
-                                pButton></button>
+                            pButton></button>
                     </div>
 
                     <div class="p-col-12 p-md-2">
@@ -185,7 +186,7 @@
                     <p-footer>
                         <div class="ui-dialog-buttonpane ui-helper-clearfix">
                             <button type="button" label="Login" icon="pi pi-user" (click)="dialogVisible=false"
-                                    pButton></button>
+                                pButton></button>
                         </div>
                     </p-footer>
                 </p-dialog>
@@ -196,8 +197,7 @@
             <div class="card card-w-title">
                 <h1>DataTable</h1>
                 <p-table [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin"
-                         [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3"
-                         [responsive]="true">
+                    [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
                     <ng-template pTemplate="caption">
                         DataTable
                     </ng-template>
@@ -226,16 +226,16 @@
                 <!-- Left Side -->
                 <div class="p-col-12">
                     <div class="card card-w-title">
-                        <h1>DataView</h1>
+                        <h1>DataView COPIAR</h1>
                         <p-dataView #dv [value]="carsLarge" [paginator]="true" [rows]="10" paginatorPosition="both"
-                                    filterBy="brand">
+                            filterBy="brand">
                             <p-header>
                                 <div class="ui-helper-clearfix">
                                     <div class="p-grid">
                                         <div class="p-col-12 p-md-6">
                                             <div style="position:relative">
                                                 <input type="search" pInputText placeholder="Search by brand"
-                                                       (keyup)="dv.filter($event.target.value)">
+                                                    (keyup)="dv.filter($event.target.value)">
                                             </div>
                                         </div>
                                         <div class="p-col-12 p-md-6" style="text-align:right">
@@ -299,8 +299,7 @@
                     <div class="card card-w-title">
                         <h1>PickList</h1>
                         <p-pickList [source]="sourceCars" [target]="targetCars" sourceHeader="Available"
-                                    targetHeader="Selected"
-                                    [responsive]="true">
+                            targetHeader="Selected" [responsive]="true">
                             <ng-template let-car pTemplate="item">
                                 <span>{{car.brand}}</span>
                             </ng-template>
@@ -312,11 +311,11 @@
                     <div class="card card-w-title">
                         <h1>OrderList</h1>
                         <p-orderList [value]="orderListCars" [listStyle]="{'height':'250px'}" [responsive]="true"
-                                     header="OrderList">
+                            header="OrderList">
                             <ng-template let-car pTemplate="item">
                                 <div class="ui-helper-clearfix">
                                     <img src="assets/demo/images/car/{{car.brand}}.png"
-                                         style="display:inline-block;margin:2px 0 2px 2px; width: 50px;"/>
+                                        style="display:inline-block;margin:2px 0 2px 2px; width: 50px;" />
                                     <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{car.brand}} -
                                         {{car.year}}
                                         -
@@ -434,7 +433,8 @@
         <div class="p-col-12">
             <div class="card card-w-title">
                 <h1>Carousel</h1>
-                <p-carousel [value]="carouselCars" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+                <p-carousel [value]="carouselCars" [numVisible]="4" [numScroll]="3" [circular]="false"
+                    [responsiveOptions]="responsiveOptions">
                     <ng-template let-car pTemplate="item">
                         <div class="car-details">
                             <div class="p-grid p-nogutter">
@@ -446,8 +446,10 @@
                                     <div class="car-subtitle">{{car.year}} | {{car.color}}</div>
 
                                     <div class="car-buttons">
-                                        <button pButton type="button" class="ui-button-success" icon="pi pi-search"></button>
-                                        <button pButton type="button" class="ui-button-warning" icon="pi pi-star"></button>
+                                        <button pButton type="button" class="ui-button-success"
+                                            icon="pi pi-search"></button>
+                                        <button pButton type="button" class="ui-button-warning"
+                                            icon="pi pi-star"></button>
                                         <button pButton type="button" class="ui-button-info" icon="pi pi-cog"></button>
                                     </div>
                                 </div>

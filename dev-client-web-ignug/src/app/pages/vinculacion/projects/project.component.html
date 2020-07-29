@@ -1,4 +1,63 @@
-<div>
-    <h1>PROJECTS</h1>
-</div>
+<h1>Proyectos</h1>
+<p-dataView #dv [value]="carsLarge" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="brand">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                    <div *ngIf="rol == 'coordinador'" style="position:relative">
+                        <input type="search" pInputText placeholder="Search by brand"
+                            (keyup)="dv.filter($event.target.value)">
+                    </div>
+                    <div *ngIf="rol == 'docente'" style="position:relative">
+                        <button [routerLink]="['/vinculacion/forms']" type="button" label="Nuevo proyecto" pButton
+                            icon="pi pi-plus-circle" iconPos="right"></button>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-6" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
 
+    <ng-template let-car pTemplate="listItem">
+        <div class="p-grid" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+            <div class="p-col-12 p-md-3" style="text-align:center">
+                <img src="assets/demo/images/car/{{car.brand}}.png">
+            </div>
+            <div class="p-col-12 p-md-8 car-details">
+                <div class="p-grid">
+                    <div class="p-col-2 p-sm-6">Vin:</div>
+                    <div class="p-col-10 p-sm-6">
+                        <b>{{car.vin}}</b>
+                    </div>
+
+                    <div class="p-col-2 p-sm-6">Year:</div>
+                    <div class="p-col-10 p-sm-6">
+                        <b>{{car.year}}</b>
+                    </div>
+
+                    <div class="p-col-2 p-sm-6">Brand:</div>
+                    <div class="p-col-10 p-sm-6">
+                        <b>{{car.brand}}</b>
+                    </div>
+
+                    <div class="p-col-2 p-sm-6">Color:</div>
+                    <div class="p-col-10 p-sm-6">
+                        <b>{{car.color}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template let-car pTemplate="gridItem">
+        <div style="padding:.5em" class="p-col-12 p-md-3">
+            <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
+                <img src="assets/demo/images/car/{{car.brand}}.png">
+                <div class="car-detail">{{car.year}} - {{car.color}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
