@@ -8,6 +8,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
 
 import { from } from 'rxjs';
 
@@ -19,6 +20,7 @@ import { from } from 'rxjs';
         PanelModule,
         InputTextModule,
         ButtonModule,
+        TabViewModule,
     ],
     declarations: [
         ProjectsComponent,
