@@ -11,6 +11,11 @@ import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
 import {FormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
+
+import {AccordionModule} from 'primeng/accordion';
 
 import { from } from 'rxjs';
 
@@ -25,6 +30,10 @@ import { from } from 'rxjs';
         TabViewModule,
         DropdownModule,
         FormsModule,
+        RadioButtonModule,
+        InputTextareaModule,
+        CalendarModule,
+        AccordionModule,
     ],
     declarations: [
         ProjectsComponent,
