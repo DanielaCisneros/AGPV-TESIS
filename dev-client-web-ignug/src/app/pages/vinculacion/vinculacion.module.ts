@@ -14,8 +14,11 @@ import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
-
 import {AccordionModule} from 'primeng/accordion';
+import {ListboxModule} from 'primeng/listbox';
+import {MultiSelectModule} from 'primeng/multiselect';
+
+import {TableModule} from 'primeng/table';
 
 import { from } from 'rxjs';
 
@@ -34,6 +37,10 @@ import { from } from 'rxjs';
         InputTextareaModule,
         CalendarModule,
         AccordionModule,
+        ListboxModule,
+        MultiSelectModule,
+        TableModule,
+        
     ],
     declarations: [
         ProjectsComponent,
