@@ -133,28 +133,6 @@
                     </p-accordion>
                 </div>
             </p-tabPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <p-tabPanel header="Participantes" leftIcon="pi pi-user">
                 <div class="p-grid ui-fluid">
                     <div class="p-col-12 p-lg-6">
@@ -197,51 +175,207 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <div class="p-col-12 p-lg-6">
+                        <div class="p-grid">
+                            <p-table [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin"
+                                [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
+                                <ng-template pTemplate="caption">
+                                    Docentes
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr [pSelectableRow]="rowData">
+                                        <td *ngFor="let col of columns">
+                                            <span class="ui-column-title">{{col.header}}</span>
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
 
 
                     <div class="p-col-12 p-lg-6">
                         <div class="p-grid">
+                            <div class="p-col-12 p-md-6">
+                                <label for="estudiante">Estudiante:</label>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <label for="ci">CI:</label>
+                            </div>
+
+                            <div class="p-col-12 p-md-6">
+                                <p-multiSelect id="estudiante" [options]="carOptions"
+                                    [(ngModel)]="selectedMultiSelectCars">
+                                </p-multiSelect>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <input id="ci" type="text" pInputText placeholder="Disabled" disabled="disabled">
+                            </div>
+
+                            <div class="p-col-12 p-md-6">
+                                <label for="especialidad">Especialidad:</label>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <label for="funciones">Funciones asignadas:</label>
+                            </div>
+
+                            <div class="p-col-12 p-md-6">
+                                <p-multiSelect id="especialidad" [options]="carOptions"
+                                    [(ngModel)]="selectedMultiSelectCars">
+                                </p-multiSelect>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <p-multiSelect id="funciones" [options]="carOptions"
+                                    [(ngModel)]="selectedMultiSelectCars">
+                                </p-multiSelect>
+                            </div>
+
+                            <div class="p-col-12 p-md-3">
+                                <button pButton type="button" label="Añadir" icon="pi pi-plus"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-lg-6">
+                        <div class="p-grid">
                             <p-table [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin"
-                    [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
-                    <ng-template pTemplate="caption">
-                        DataTable
-                    </ng-template>
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                                {{col.header}}
-                                <p-sortIcon [field]="col.field"></p-sortIcon>
-                            </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData let-columns="columns">
-                        <tr [pSelectableRow]="rowData">
-                            <td *ngFor="let col of columns">
-                                <span class="ui-column-title">{{col.header}}</span>
-                                {{rowData[col.field]}}
-                            </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
+                                [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
+                                <ng-template pTemplate="caption">
+                                    Estudiantes
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr [pSelectableRow]="rowData">
+                                        <td *ngFor="let col of columns">
+                                            <span class="ui-column-title">{{col.header}}</span>
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Institutción beneficiaria" leftIcon="pi pi-phone">
+                <div class="p-grid ui-fluid">
+                    <div class="p-col-12 p-lg-12">
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-4">
+                                <label for="nombreInstitucion">Nombre completo organización/institución:</label>
+                            </div>
+                            <div class="p-col-12 p-md-4">
+                                <label for="provincia">Provincia:</label>
+                            </div>
+                            <div class="p-col-12 p-md-4">
+                                <label for="canton">Cantón:</label>
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="nombreInstitucion" type="text" pInputText placeholder="Nombre completo organización/institución">
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="provincia" type="text" pInputText placeholder="Provincia">
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="canton" type="text" pInputText placeholder="Cantón">
+                            </div>
+    
+                            <div class="p-col-12 p-md-4">
+                                <label for="parroquia">Parroquia:</label>
+                            </div>
+                            <div class="p-col-12 p-md-4">
+                                <label for="ubicacion">Lugar de ubicación:</label>
+                            </div>
+                            <div class="p-col-12 p-md-4">
+                                <label for="beneficiariosDirectos">Beneficiarios directos:</label>
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="parroquia" type="text" pInputText placeholder="Parroquia">
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="ubicacion" type="text" pInputText placeholder="Lugar de ubicación">
+                            </div>
+                            <div class="p-col-2 p-sm-4">
+                                <input id="beneficiariosDirectos" type="text" pInputText placeholder="Beneficiarios directos">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+    
+                    <div class="p-col-12 p-lg-6" style="margin-top:20px">
+                        <div class="p-grid">
+                            <div class="p-col-12">
+                                <label for="nombreCoordinador">Nombres y apellidos de coordinador(es) de institución beneficiaria:</label>
+                            </div>
+                            <div class="p-col-10">
+                                <input id="nombreCoordinador" type="text" pInputText placeholder="Nombres y apellidos de coordinador(es) de institución beneficiaria">
+                            </div>
+                            <div class="p-col-12">
+                                <label for="cargoInstitucion">Cargo o funcion de la institución beneficiaria:</label>
+                            </div>
+                            <div class="p-col-10">
+                                <input id="cargoInstitucion" type="text" pInputText placeholder="Cargo o funcion de la institución beneficiaria">
+                            </div>
+                            <div class="p-col-12">
+                                <label for="funcionComunidad">Función que cumple en el proyecto de vinculación con la comunidad:</label>
+                            </div>
+                            <div class="p-col-10">
+                                <input id="funcionComunidad" type="text" pInputText placeholder="Función que cumple en el proyecto de vinculación con la comunidad">
+                            </div>
+    
+                            <div class="p-col-12 p-md-3">
+                                <button pButton type="button" label="Añadir" icon="pi pi-plus"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-lg-6">
+                        <div class="p-grid">
+                            <p-table style="margin-top:20px" [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin"
+                                [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
+                                <ng-template pTemplate="caption">
+                                    COORDINADOR(ES) DE INSTITUCIÓN BENEFICIARIA
+                                </ng-template>
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr [pSelectableRow]="rowData">
+                                        <td *ngFor="let col of columns">
+                                            <span class="ui-column-title">{{col.header}}</span>
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
                         </div>
                     </div>
                 </div>
@@ -265,28 +399,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <p-tabPanel header="Institutción beneficiaria" leftIcon="pi pi-phone">
-                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the
-                well
-                for this third
-                and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin
-                Michael
-                Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family
-                would one day be completely legitimate.
-            </p-tabPanel>
+            
             <p-tabPanel header="Contextualización" leftIcon="pi pi-check">
                 The story begins as Don Vito Corleone, the head of a New York Mafia family, overseeshis daughter's
                 wedding.
