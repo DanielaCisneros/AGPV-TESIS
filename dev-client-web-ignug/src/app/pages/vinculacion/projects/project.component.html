@@ -22,7 +22,7 @@
 
     <ng-template let-car pTemplate="listItem">
         <div class="p-grid" style="padding: 1em; border-bottom: 1px solid #d9d9d9">
-            <div class="p-md-4" style="text-align:center">
+            <div class="p-md-2" style="text-align:center">
                 <img src="assets/demo/images/car/{{car.brand}}.png">
             </div>
             <div class="p-md-4 car-details">
@@ -34,6 +34,9 @@
                     </h1>
                 </div>
             </div>
+            <div class="p-md-4" style="text-align:center">
+                <b>{{car.color}}</b>
+            </div>
             <div class="p-md-2" style="text-align:center">
                 <p-dropdown [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
             </div>
@@ -43,7 +46,7 @@
 
     <ng-template let-car pTemplate="gridItem">
         <div style="padding:.5em" class="p-col-12 p-md-3">
-            <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
+            <p-panel [header]="car.brand" [style]="{'text-align':'center'}">
                 <img src="assets/demo/images/car/{{car.brand}}.png">
                 <div class="car-detail">{{car.year}} - {{car.color}}</div>
                 <hr class="ui-widget-content" style="border-top:0">
