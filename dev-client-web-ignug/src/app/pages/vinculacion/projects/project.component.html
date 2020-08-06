@@ -21,35 +21,21 @@
     </p-header>
 
     <ng-template let-car pTemplate="listItem">
-        <div class="p-grid" style="padding: 2em; border-bottom: 1px solid #d9d9d9">
+        <div class="p-grid" style="padding: 1em; border-bottom: 1px solid #d9d9d9">
             <div class="p-md-4" style="text-align:center">
                 <img src="assets/demo/images/car/{{car.brand}}.png">
             </div>
             <div class="p-md-4 car-details">
                 <div class="p-grid">
-                    <div class="p-col-2 p-sm-6">Vin:</div>
-                    <div class="p-col-10 p-sm-6">
-                        <b>{{car.vin}}</b>
-                    </div>
-
-                    <div class="p-col-2 p-sm-6">Year:</div>
-                    <div class="p-col-10 p-sm-6">
-                        <b>{{car.year}}</b>
-                    </div>
-
-                    <div class="p-col-2 p-sm-6">Brand:</div>
-                    <div class="p-col-10 p-sm-6">
-                        <b>{{car.brand}}</b>
-                    </div>
-
-                    <div class="p-col-2 p-sm-6">Color:</div>
-                    <div class="p-col-10 p-sm-6">
-                        <b>{{car.color}}</b>
-                    </div>
+                    <h1>
+                        <div class="p-col-10 p-sm-6">
+                            <b>{{car.brand}}</b>
+                        </div>
+                    </h1>
                 </div>
             </div>
             <div class="p-md-2" style="text-align:center">
-                <p-dropdown [options]="cities"  [(ngModel)]="selectedCity4"></p-dropdown>
+                <p-dropdown [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
             </div>
         </div>
 
@@ -61,7 +47,7 @@
                 <img src="assets/demo/images/car/{{car.brand}}.png">
                 <div class="car-detail">{{car.year}} - {{car.color}}</div>
                 <hr class="ui-widget-content" style="border-top:0">
-                <p-dropdown [options]="cities"  [(ngModel)]="selectedCity4"></p-dropdown>
+                <p-dropdown [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
             </p-panel>
         </div>
     </ng-template>
