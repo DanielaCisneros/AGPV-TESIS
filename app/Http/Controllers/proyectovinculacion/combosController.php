@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\proyectovinculacion;
 
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\AcademiPeriod;
-use App\Career;
-use App\FraquencyOfActivity;
+use App\Models\Vinculacion\AcademiPeriod;
+use App\Models\Vinculacion\Career;
+use App\Models\Vinculacion\FraquencyOfActivity;
 
 
 class combosController extends Controller

@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\Vinculacion;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Activiti extends Model
+class Mode extends Model
 {
     //
 }
