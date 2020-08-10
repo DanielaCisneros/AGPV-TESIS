@@ -17,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+<<<<<<< HEAD
 Route::get('/combo', 'proyectovinculacion\combosController@show');
+=======
+Route::get('/combo', 'proyectovinculacion\combosController@show');
+>>>>>>> 1d860a31d3c033662eccc5538246c56424094c6f

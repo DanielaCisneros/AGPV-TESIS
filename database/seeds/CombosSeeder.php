@@ -19,5 +19,9 @@ class CombosSeeder extends Seeder
             'details'=> 'Octubre-Abril',
             'year'=>'2021',
         ]); 
+        //$this->call([
+          //  CombosSeeder::class,
+        //]);
+
     }
 }
