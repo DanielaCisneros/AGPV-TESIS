@@ -13,7 +13,7 @@ use App\Models\Vinculacion\FraquencyOfActivity;
 class combosController extends Controller
 {
   public function show(){
-    $academiPreriod=AcademiPeriod::all("details");
+    $academiPreriod=AcademiPeriod::all("details","year");
     $career=Career::all("description");
     $fraquencyOfActivity=FraquencyOfActivity::all();
     $combos=array("academiPreriod"=>$academiPreriod,"career"=>$career);
