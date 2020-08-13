@@ -16,8 +16,20 @@ export class FormsComponent implements OnInit {
     cols: any[];
     cars: Car[];
     selectedCar3: Car;
+    fechaInicio: Date;
+    fechaFinal: Date;
+    plazo: any;
 
     constructor(private carService: CarService) {
+    }
+
+    calcularPlazo (){
+        if(this.fechaInicio != undefined && this.fechaFinal != undefined){
+            var fechaInicio = transformDate(this.fechaInicio);
+            var fechaFinal = transformDate(this.fechaFinal);
+            var plazo = fechaFinal- fechaInicio;
+            this.plazo = plazo/(1000*60*60*24);
+        }
     }
 
     ngOnInit() {
@@ -52,4 +64,13 @@ export class FormsComponent implements OnInit {
             { field: 'color', header: 'Funciones' }
         ];
     }
+}
+
+function transformDate(date: Date) {
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
+    var stringDate = year + '-' + month + '-' + day;
+    var finalDate = new Date(stringDate);
+    return finalDate.getTime();
 }

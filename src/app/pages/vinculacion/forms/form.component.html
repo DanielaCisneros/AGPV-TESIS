@@ -2,15 +2,15 @@
 <div class="card card-w-title">
     <div class="ui-helper-clearfix">
         <div class="p-grid">
-            <div class="p-col-12 p-md-4">
+            <div class="p-col-12 p-md-6">
                 <h1>
                     <input id="nombreProyecto" type="text" pInputText placeholder="Nombre proyecto">
                 </h1>
             </div>
-            <div class="p-col-12 p-md-4">
+            <div class="p-col-12 p-md-3">
                 <p-dropdown id="estado" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
             </div>
-            <div class="p-col-12 p-md-4">
+            <div class="p-col-12 p-md-3">
                 <p-dropdown id="periodo" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
             </div>
         </div>
@@ -64,7 +64,7 @@
                                 placeholder="Cobertura y localizacion" autoResize="autoResize"></textarea>
                         </div>
                         <div class="p-col-2 p-sm-6">
-                            <input disabled="disabled" id="plazo" type="text" pInputText
+                            <input [(ngModel)]="plazo" disabled="disabled" id="plazo" type="text" pInputText
                                 placeholder="Plazo de ejecucion">
                         </div>
                         <div class="p-col-4">
@@ -81,10 +81,10 @@
                             </p-calendar>
                         </div>
                         <div class="p-col-2 p-sm-4">
-                            <p-calendar id="fechaInicio" [showIcon]="true" placeholder="Fecha inicio"></p-calendar>
+                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaInicio" id="fechaInicio" [showIcon]="true" placeholder="Fecha inicio"></p-calendar>
                         </div>
                         <div class="p-col-2 p-sm-4">
-                            <p-calendar id="fechaFinal" [showIcon]="true" placeholder="Fecha final"></p-calendar>
+                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaFinal" id="fechaFinal" [showIcon]="true" placeholder="Fecha final"></p-calendar>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                                     placeholder="Función que cumple en el proyecto de vinculación con la comunidad">
                             </div>
                             <div class="p-col-12 p-md-3">
-                                <button pButton type="button" label="Añadir" icon="pi pi-plus"></button>
+                                <button pButton type="button" label="Añadir" icon="pi pi-plus" (click) ="prueba()"></button>
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,7 @@
                                     placeholder="Objetivo genereal" autoResize="autoResize"></textarea>
                             </div>
                             <div class="p-col-2 p-md-4">
-                                <textarea id="indicador" [rows]="5" [cols]="30" pInputTextarea placeholder="Indicador"
+                                <textarea id="indicadorObjetivo" [rows]="5" [cols]="30" pInputTextarea placeholder="Indicador"
                                     autoResize="autoResize"></textarea>
                             </div>
                             <div class="p-col-2 p-md-4">
@@ -267,7 +267,7 @@
                                         <label for="indicador">Indicador:</label>
                                     </div>
                                     <div class="p-col-10">
-                                        <input id="indicador" type="text" pInputText placeholder="Indicador">
+                                        <input id="indicadorEspecifico" type="text" pInputText placeholder="Indicador">
                                     </div>
                                     <div class="p-col-12">
                                         <label for="mediosVerificacion">Medios de verificación:</label>
@@ -348,7 +348,7 @@
                                         <label for="indicador">Indicador:</label>
                                     </div>
                                     <div class="p-col-10">
-                                        <input id="indicador" type="text" pInputText placeholder="Indicador">
+                                        <input id="indicadorResultado" type="text" pInputText placeholder="Indicador">
                                     </div>
                                     <div class="p-col-12">
                                         <label for="mediosVerificacion">Medios de verificación:</label>
@@ -375,7 +375,7 @@
                                         <label for="indicador">Indicador:</label>
                                     </div>
                                     <div class="p-col-10">
-                                        <input id="indicador" type="text" pInputText placeholder="Indicador">
+                                        <input id="indicadorActividades" type="text" pInputText placeholder="Indicador">
                                     </div>
                                     <div class="p-col-12">
                                         <label for="mediosVerificacion">Medios de verificación:</label>
