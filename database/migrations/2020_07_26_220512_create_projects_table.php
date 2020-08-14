@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->foreignId('charitable_institution_id')->references('id')->on('charitable_institutions');                 
             $table->foreignId('academi_period_id')->references('id')->on('academi_periods');
             $table->foreignId('career_id')->constrained();
-            $table->foreignId('assigned_line_id')->references('id')->on('assigned_lines');
+            $table->foreignId('assigned_line_id')->references('id')->on('catalogues');
             $table->foreignId('bonding_activitie_id')->references('id')->on('bonding_activities');
             $table->foreignId('research_area_id')->references('id')->on('research_areas');
             $table->foreignId('linkage_axe_id')->references('id')->on('linkage_axes');

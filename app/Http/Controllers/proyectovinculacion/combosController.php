@@ -6,35 +6,32 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Vinculacion\AcademiPeriod;
-use App\Models\Vinculacion\Career;
-use App\Models\Vinculacion\FraquencyOfActivity;
+use App\Models\Career;
+use App\Models\Catalogue;
 use App\Models\Vinculacion\LinkageAxes;
 use App\Models\Vinculacion\AssignedLine;
 use App\Models\Vinculacion\BondingActivities;
-use App\Models\Vinculacion\MeansOfVerification;
-use App\Models\Vinculacion\Mode;
+
 
 
 class combosController extends Controller
 {
   public function show(){
-    $academiPreriod=AcademiPeriod::all("details","year");
-    $career=Career::all("description");
-    $fraquencyOfActivity=FraquencyOfActivity::all("details");
+    $academiPreriod=AcademiPeriod::all("nombre");
+    $career=Career::all('description');
+    $catalogue=Catalogue::all();
+  //  $fraquencyOfActivity=FraquencyOfActivity::all();borrar modelo
     $LinkageAxes=LinkageAxes::all("details");
-    $AssignedLine=AssignedLine::all("details");
+  //  $AssignedLine=AssignedLine::all("details"); en revision
     $BondingActivities=BondingActivities::all("details");
-    $MeansOfVerification=MeansOfVerification::all("details");
-    $Mode=Mode::all('name');
+    //$MeansOfVerification=MeansOfVerification::all("details");
+ //   $Mode=Mode::all('name');borrar modelo
     $combos=array(
         "academiPreriod"=>$academiPreriod,
         "career"=>$career,
-        "fraquencyOfActivity"=>$fraquencyOfActivity,
         "LinkageAxes"=>$LinkageAxes,
-        "AssignedLine"=>$AssignedLine,
         "BondingActivities"=>$BondingActivities,
-        "MeansOfVerification"=>$MeansOfVerification,
-        "Mode"=>$Mode
+        "Catalogue"=>$catalogue
       );
     return $combos;
  }

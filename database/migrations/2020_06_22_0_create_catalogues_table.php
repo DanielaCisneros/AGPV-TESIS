@@ -16,7 +16,7 @@ class CreateCataloguesTable extends Migration
         Schema::create('catalogues', function (Blueprint $table) {
             $table->id();
            // $table->bigInteger('parent_code_id')->nullable();
-            $table->foreignId('parent_code_id')->references('id')->on('catalogues');
+            $table->foreignId('parent_code_id')->nullable()->references('id')->on('catalogues');
             $table->string('code', 100);
             $table->string('name', 500);
             $table->string('type', 200);
