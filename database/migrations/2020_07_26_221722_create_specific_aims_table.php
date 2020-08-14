@@ -16,9 +16,13 @@ class CreateSpecificAimsTable extends Migration
         Schema::create('specific_aims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->references('id')->on('projects');
-            $table->string('detail',100);
+            $table->string('name',100);
             $table->string('indicator',100);
             $table->string('trackingMeans',100);
+            $table->foreignId('aims_types')->references('id')->on('catalogues');
+            $table->string('result',100);
+            $table->string('activities',100);
+
             $table->timestamps();
         });
     }

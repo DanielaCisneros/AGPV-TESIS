@@ -14,10 +14,22 @@ class CreateAcademiPeriodsTable extends Migration
     public function up()
     {
         Schema::create('academi_periods', function (Blueprint $table) {
-            $table->id();
-            $table->string('details',100);
-            $table->string("year",4);
+            $table->increments('id');
             $table->timestamps();
+            $table->string('codigo', 50)->unique();
+            $table->string('nombre', 100)->unique();
+            $table->date('fecha_inicio_periodo');
+            $table->date('fecha_fin_periodo');
+            $table->date('fecha_fin_anulacion')->nullable();
+            $table->date('fecha_inicio_cupo')->nullable();
+            $table->date('fecha_fin_cupo')->nullable();
+            $table->date('fecha_inicio_ordinaria')->nullable();
+            $table->date('fecha_fin_ordinaria')->nullable();
+            $table->date('fecha_inicio_extraordinaria')->nullable();
+            $table->date('fecha_fin_extraordinaria')->nullable();
+            $table->date('fecha_inicio_especial')->nullable();
+            $table->date('fecha_fin_especial')->nullable();
+            $table->string('estado', 20)->default('ACTIVO');;
         });
     }
 

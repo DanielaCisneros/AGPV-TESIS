@@ -18,9 +18,7 @@ class CreateProjectsTable extends Migration
             $table->foreignId('charitable_institution_id')->references('id')->on('charitable_institutions');                 
             $table->foreignId('academi_period_id')->references('id')->on('academi_periods');
             $table->foreignId('career_id')->constrained();
-            $table->foreignId('mode_id')->references('id')->on('modes');
             $table->foreignId('assigned_line_id')->references('id')->on('assigned_lines');
-            $table->foreignId('fraquency_of_activitie_id')->references('id')->on('fraquency_of_activities');
             $table->foreignId('bonding_activitie_id')->references('id')->on('bonding_activities');
             $table->foreignId('research_area_id')->references('id')->on('research_areas');
             $table->foreignId('linkage_axe_id')->references('id')->on('linkage_axes');
@@ -29,6 +27,7 @@ class CreateProjectsTable extends Migration
             $table->string('state',100);
             $table->string('field',100);
             $table->string('aim',100);
+            $table->foreignId('fraquency_of_activities')->references('id')->on('catalogues');
             $table->string('cycle',100);
             $table->string('leadTime',3);
             $table->date('deliveryDate');// tiempo
@@ -41,7 +40,7 @@ class CreateProjectsTable extends Migration
             $table->string('justification',300);
             $table->string('authorizedBy',200);
             $table->string('developeDBy',200);
-            $table->string('generalAim',100);
+            $table->string('schedules',300);//cronograma
             $table->timestamps();
         });
     }
