@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Car } from '../../../demo/domain/car';
 import { CarService } from '../../../demo/service/carservice';
+import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria/coordinador'
+import { Docente } from '../../../models/vinculacion/participantes/docente'
 
 @Component({
     selector: 'app-vinculacion-forms',
@@ -16,9 +18,28 @@ export class FormsComponent implements OnInit {
     cols: any[];
     cars: Car[];
     selectedCar3: Car;
+
+
+
+
+    //FECHAS
     fechaInicio: Date;
     fechaFinal: Date;
     plazo: any;
+
+    //TABLAS
+    tablaCoorInstBene: any[];
+    coordinadoresInstitucion: Coordinador[] = [];
+    coordinadorInstitucion: Coordinador; 
+
+    tablaDoceParti: any[];
+    DocentesParticipantes: Docente[] = [];
+    DocenteParticipante: Docente;
+
+    //NGMODEL
+    nombreCoorInstBen: String;
+    cargoCoorInstBen: String;
+    funcionCoorComu: String;
 
     constructor(private carService: CarService) {
     }
@@ -32,9 +53,50 @@ export class FormsComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        this.carService.getCarsSmall().then(cars => this.cars = cars);
+    addCoorInstBene(){
+        if (this.nombreCoorInstBen != undefined && this.cargoCoorInstBen != undefined && this.funcionCoorComu != undefined
+            && this.nombreCoorInstBen.length != 0 && this.cargoCoorInstBen.length != 0 && this.funcionCoorComu.length != 0) {
+            this.coordinadoresInstitucion.push(this.coordinadorInstitucion = {
+                nombreCoorInstBen: this.nombreCoorInstBen,
+                cargoCoorInstBen: this.cargoCoorInstBen,
+                funcionCoorComu: this.funcionCoorComu,
+            });
+        }  else{
+            alert('Porfavor complete todos campos');
+        } 
+    }
 
+    ngOnInit() {
+        //TABLE FUNCIONALIDAD
+        this.carService.getCarsSmall().then((cars) => this.cars = cars);
+
+        this.cols = [
+            { field: 'vin', header: 'Docente' },
+            { field: 'year', header: 'Cargo' },
+            { field: 'brand', header: 'Horario' },
+            { field: 'color', header: 'Funciones' }
+        ];
+
+        //TABLAS
+        this.tablaCoorInstBene = [
+            { field: 'nombreCoorInstBen', header: 'Nombre completo' },
+            { field: 'cargoCoorInstBen', header: 'Cargo institución' },
+            { field: 'funcionCoorComu', header: 'Funciones comunidad' },
+        ]
+
+        this.tablaDoceParti = [
+            { field: 'nombreCoorInstBen', header: 'Nombre docente' },
+            { field: 'cargoCoorInstBen', header: 'Cargo docente' },
+            { field: 'funcionCoorComu', header: 'Horario de trabajo' },
+            { field: 'funcionCoorComu', header: 'Funciones docente' },
+        ]
+
+
+
+
+
+
+        //OTRA FUNCIONALIDAD (COMBOS)
         this.cities = [];
         this.cities.push({ label: 'Estado', value: 0 });
         this.cities.push({ label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } });
@@ -44,7 +106,7 @@ export class FormsComponent implements OnInit {
         this.cities.push({ label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } });
 
         this.citiesListbox = this.cities.slice(1);
-
+        
         this.carOptions = [];
         this.carOptions.push({ label: 'Audi', value: 'Audi' });
         this.carOptions.push({ label: 'BMW', value: 'BMW' });
@@ -55,14 +117,7 @@ export class FormsComponent implements OnInit {
         this.carOptions.push({ label: 'Mercedes', value: 'Mercedes' });
         this.carOptions.push({ label: 'Renault', value: 'Renault' });
         this.carOptions.push({ label: 'Volkswagen', value: 'Volkswagen' });
-        this.carOptions.push({ label: 'Volvo', value: 'Volvo' });
-
-        this.cols = [
-            { field: 'vin', header: 'Docente' },
-            { field: 'year', header: 'Cargo' },
-            { field: 'brand', header: 'Horario' },
-            { field: 'color', header: 'Funciones' }
-        ];
+        this.carOptions.push({ label: 'Volvo', value: 'Volvo' });    
     }
 }
 
