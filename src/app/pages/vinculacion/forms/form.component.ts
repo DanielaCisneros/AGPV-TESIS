@@ -41,6 +41,11 @@ export class FormsComponent implements OnInit {
     cargoCoorInstBen: String;
     funcionCoorComu: String;
 
+    nombreDoceParti: any;
+    cargoDoceParti: String;
+    horarioDoceParti: String;
+    funcionDoceParti: String;
+
     constructor(private carService: CarService) {
     }
 
@@ -62,9 +67,29 @@ export class FormsComponent implements OnInit {
                 funcionCoorComu: this.funcionCoorComu,
             });
         }  else{
-            alert('Porfavor complete todos campos');
+            alert('Porfavor complete todos campos de coordinador de institucion beneficiaria');
         } 
     }
+
+    addDoceParti(){
+        if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined 
+            && this.funcionDoceParti != undefined && this.cargoDoceParti.length != 0 && this.horarioDoceParti.length != 0
+            && this.funcionDoceParti.length != 0 && this.nombreDoceParti != 0) {
+                this.DocentesParticipantes.push(this.DocenteParticipante = {
+                    nombreDoceParti: this.nombreDoceParti.name,
+                    cargoDoceParti: this.cargoDoceParti,
+                    horarioDoceParti: this.horarioDoceParti,
+                    funcionDoceParti: this.funcionDoceParti
+                });
+        }  else{
+            alert('Porfavor complete todos campos deocentes participantes');
+        } 
+        
+        //console.log(this.nombreDoceParti.name);
+        //console.log(this.nombreDoceParti);
+    }
+
+    
 
     ngOnInit() {
         //TABLE FUNCIONALIDAD
@@ -85,10 +110,10 @@ export class FormsComponent implements OnInit {
         ]
 
         this.tablaDoceParti = [
-            { field: 'nombreCoorInstBen', header: 'Nombre docente' },
-            { field: 'cargoCoorInstBen', header: 'Cargo docente' },
-            { field: 'funcionCoorComu', header: 'Horario de trabajo' },
-            { field: 'funcionCoorComu', header: 'Funciones docente' },
+            { field: 'nombreDoceParti', header: 'Nombre docente' },
+            { field: 'cargoDoceParti', header: 'Cargo docente' },
+            { field: 'horarioDoceParti', header: 'Horario de trabajo' },
+            { field: 'funcionDoceParti', header: 'Funciones docente' },
         ]
 
 
