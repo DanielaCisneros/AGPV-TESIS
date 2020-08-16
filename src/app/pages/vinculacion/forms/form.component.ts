@@ -4,6 +4,7 @@ import { Car } from '../../../demo/domain/car';
 import { CarService } from '../../../demo/service/carservice';
 import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria/coordinador'
 import { Docente } from '../../../models/vinculacion/participantes/docente'
+import { Estudiante } from '../../../models/vinculacion/participantes/estudiante'
 
 @Component({
     selector: 'app-vinculacion-forms',
@@ -12,7 +13,6 @@ import { Docente } from '../../../models/vinculacion/participantes/docente'
 export class FormsComponent implements OnInit {
 
     cities: SelectItem[];
-    selectedCity1: any;
     citiesListbox: SelectItem[];
     carOptions: SelectItem[];
     cols: any[];
@@ -33,8 +33,12 @@ export class FormsComponent implements OnInit {
     coordinadorInstitucion: Coordinador; 
 
     tablaDoceParti: any[];
-    DocentesParticipantes: Docente[] = [];
-    DocenteParticipante: Docente;
+    docentesParticipantes: Docente[] = [];
+    docenteParticipante: Docente;
+
+    tablaEstuParti: any[];
+    estudiantesParticipantes:  Estudiante[] = [];
+    estudianteParticipante: Estudiante;
 
     //NGMODEL
     nombreCoorInstBen: String;
@@ -45,6 +49,11 @@ export class FormsComponent implements OnInit {
     cargoDoceParti: String;
     horarioDoceParti: String;
     funcionDoceParti: String;
+
+    nombreEstuParti: any;
+    cedulaEstuParti: String;
+    especialidadEstuParti: any;
+    funcionEstuParti: String;
 
     constructor(private carService: CarService) {
     }
@@ -75,7 +84,7 @@ export class FormsComponent implements OnInit {
         if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined 
             && this.funcionDoceParti != undefined && this.cargoDoceParti.length != 0 && this.horarioDoceParti.length != 0
             && this.funcionDoceParti.length != 0 && this.nombreDoceParti != 0) {
-                this.DocentesParticipantes.push(this.DocenteParticipante = {
+                this.docentesParticipantes.push(this.docenteParticipante = {
                     nombreDoceParti: this.nombreDoceParti.name,
                     cargoDoceParti: this.cargoDoceParti,
                     horarioDoceParti: this.horarioDoceParti,
@@ -84,9 +93,20 @@ export class FormsComponent implements OnInit {
         }  else{
             alert('Porfavor complete todos campos deocentes participantes');
         } 
-        
-        //console.log(this.nombreDoceParti.name);
-        //console.log(this.nombreDoceParti);
+    }
+
+    addEstuParti(){
+        if (this.nombreEstuParti != undefined && this.especialidadEstuParti != undefined && this.funcionEstuParti != undefined 
+            && this.nombreEstuParti != 0 && this.especialidadEstuParti != 0 && this.funcionEstuParti.length != 0) {
+                this.estudiantesParticipantes.push(this.estudianteParticipante = {
+                    nombreEstuParti: this.nombreEstuParti.name,
+                    cedulaEstuParti: '012345',
+                    especialidadEstuParti: this.especialidadEstuParti.name,
+                    funcionEstuParti: this.funcionEstuParti
+                });
+        }  else{
+            alert('Porfavor complete todos campos estudiantes participantes');
+        } 
     }
 
     
@@ -114,6 +134,13 @@ export class FormsComponent implements OnInit {
             { field: 'cargoDoceParti', header: 'Cargo docente' },
             { field: 'horarioDoceParti', header: 'Horario de trabajo' },
             { field: 'funcionDoceParti', header: 'Funciones docente' },
+        ]
+
+        this.tablaEstuParti = [
+            { field: 'nombreEstuParti', header: 'Nombre estudiante' },
+            { field: 'cedulaEstuParti', header: 'CI' },
+            { field: 'especialidadEstuParti', header: 'Especialidad' },
+            { field: 'funcionEstuParti', header: 'Funciones estudiante' },
         ]
 
 

@@ -81,52 +81,16 @@
                             </p-calendar>
                         </div>
                         <div class="p-col-2 p-sm-4">
-                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaInicio" id="fechaInicio" [showIcon]="true" placeholder="Fecha inicio"></p-calendar>
+                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaInicio" id="fechaInicio"
+                                [showIcon]="true" placeholder="Fecha inicio"></p-calendar>
                         </div>
                         <div class="p-col-2 p-sm-4">
-                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaFinal" id="fechaFinal" [showIcon]="true" placeholder="Fecha final"></p-calendar>
+                            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaFinal" id="fechaFinal"
+                                [showIcon]="true" placeholder="Fecha final"></p-calendar>
                         </div>
                     </div>
                 </div>
             </p-tabPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <p-tabPanel header="Institutción beneficiaria" leftIcon="pi pi-phone">
                 <div class="p-grid ui-fluid">
                     <div class="p-col-12 p-lg-12">
@@ -197,14 +161,16 @@
                                     placeholder="Función que cumple en el proyecto de vinculación con la comunidad">
                             </div>
                             <div class="p-col-12 p-md-3">
-                                <button pButton type="button" label="Añadir" icon="pi pi-plus" (click) ="addCoorInstBene()"></button>
+                                <button pButton type="button" label="Añadir" icon="pi pi-plus"
+                                    (click)="addCoorInstBene()"></button>
                             </div>
                         </div>
                     </div>
                     <div class="p-col-12 p-lg-6">
                         <div class="p-grid" style="padding: 1em; border-top: 2px solid #d9d9d9;">
-                            <p-table [columns]="tablaCoorInstBene" [value]="coordinadoresInstitucion" selectionMode="single" dataKey="vin"
-                                [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
+                            <p-table [columns]="tablaCoorInstBene" [value]="coordinadoresInstitucion"
+                                selectionMode="single" dataKey="vin" [style]="{'margin-bottom':'20px'}"
+                                [(selection)]="selectedCar3" [responsive]="true">
                                 <ng-template pTemplate="caption">
                                     COORDINADOR(ES) DE INSTITUCIÓN BENEFICIARIA
                                 </ng-template>
@@ -282,8 +248,8 @@
                                     placeholder="Objetivo genereal" autoResize="autoResize"></textarea>
                             </div>
                             <div class="p-col-2 p-md-4">
-                                <textarea id="indicadorObjetivo" [rows]="5" [cols]="30" pInputTextarea placeholder="Indicador"
-                                    autoResize="autoResize"></textarea>
+                                <textarea id="indicadorObjetivo" [rows]="5" [cols]="30" pInputTextarea
+                                    placeholder="Indicador" autoResize="autoResize"></textarea>
                             </div>
                             <div class="p-col-2 p-md-4">
                                 <textarea id="mediosVerificacion" [rows]="5" [cols]="30" pInputTextarea
@@ -455,43 +421,6 @@
                     </div>
                 </div>
             </p-tabPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <p-tabPanel header="Participantes" leftIcon="pi pi-user">
                 <div class="p-grid ui-fluid">
                     <p-accordion>
@@ -510,7 +439,8 @@
                                             </p-dropdown>
                                         </div>
                                         <div class="p-col-12 p-md-6">
-                                            <input [(ngModel)]="cargoDoceParti" id="cargo" type="text" pInputText placeholder="Cargo">
+                                            <input [(ngModel)]="cargoDoceParti" id="cargo" type="text" pInputText
+                                                placeholder="Cargo">
                                         </div>
                                         <div class="p-col-12 p-md-6">
                                             <label for="horarioTrabajo">Horario de trabajo para el proyecto:</label>
@@ -519,23 +449,24 @@
                                             <label for="funciones">Funciones asignadas:</label>
                                         </div>
                                         <div class="p-col-12 p-md-6">
-                                            <input [(ngModel)]="horarioDoceParti" id="horarioTrabajo" type="text" pInputText
-                                                placeholder="Horario de trabajo para el proyecto">
+                                            <input [(ngModel)]="horarioDoceParti" id="horarioTrabajo" type="text"
+                                                pInputText placeholder="Horario de trabajo para el proyecto">
                                         </div>
                                         <div class="p-col-12 p-md-6">
                                             <input [(ngModel)]="funcionDoceParti" id="funciones" type="text" pInputText
                                                 placeholder="Funciones asignadas">
                                         </div>
                                         <div class="p-col-12 p-md-3">
-                                            <button (click) ="addDoceParti()" pButton type="button" label="Añadir" icon="pi pi-plus"></button>
+                                            <button (click)="addDoceParti()" pButton type="button" label="Añadir"
+                                                icon="pi pi-plus"></button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-col-12 p-lg-6">
                                     <div class="p-grid">
-                                        <p-table [columns]="tablaDoceParti" [value]="DocentesParticipantes" selectionMode="single" dataKey="vin"
-                                            [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3"
-                                            [responsive]="true">
+                                        <p-table [columns]="tablaDoceParti" [value]="docentesParticipantes"
+                                            selectionMode="single" dataKey="vin" [style]="{'margin-bottom':'20px'}"
+                                            [(selection)]="selectedCar3" [responsive]="true">
                                             <ng-template pTemplate="caption">
                                                 Docentes
                                             </ng-template>
@@ -560,12 +491,43 @@
                                 </div>
                             </div>
                         </p-accordionTab>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <p-accordionTab header="Estudiantes">
                             <div class="p-grid ui-fluid">
                                 <div class="p-col-12 p-lg-6">
                                     <div class="p-grid">
-                                        <p-table [columns]="cols" [value]="cars" selectionMode="single" dataKey="vin"
-                                            [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3"
+                                        <p-table [columns]="tablaEstuParti" [value]="estudiantesParticipantes" 
+                                            selectionMode="single" dataKey="vin" [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3"
                                             [responsive]="true">
                                             <ng-template pTemplate="caption">
                                                 Estudiantes
@@ -598,11 +560,11 @@
                                             <label for="ci">CI:</label>
                                         </div>
                                         <div class="p-col-12 p-md-6">
-                                            <p-dropdown id="estudiante" [options]="cities" [(ngModel)]="selectedCity4">
+                                            <p-dropdown id="estudiante" [options]="cities" [(ngModel)]="nombreEstuParti">
                                             </p-dropdown>
                                         </div>
                                         <div class="p-col-12 p-md-6">
-                                            <input id="ci" type="text" pInputText placeholder="Disabled"
+                                            <input [(ngModel)]="cedulaEstuParti" id="ci" type="text" pInputText placeholder="Disabled"
                                                 disabled="disabled">
                                         </div>
                                         <div class="p-col-12 p-md-6">
@@ -613,14 +575,14 @@
                                         </div>
                                         <div class="p-col-12 p-md-6">
                                             <p-dropdown id="especialidad" [options]="cities"
-                                                [(ngModel)]="selectedCity4"></p-dropdown>
+                                                [(ngModel)]="especialidadEstuParti"></p-dropdown>
                                         </div>
                                         <div class="p-col-12 p-md-6">
-                                            <input id="funciones" type="text" pInputText
+                                            <input [(ngModel)]="funcionEstuParti" id="funciones" type="text" pInputText
                                                 placeholder="Funciones asignadas">
                                         </div>
                                         <div class="p-col-12 p-md-3">
-                                            <button pButton type="button" label="Añadir" icon="pi pi-plus"></button>
+                                            <button (click)="addEstuParti()" pButton type="button" label="Añadir" icon="pi pi-plus"></button>
                                         </div>
                                     </div>
                                 </div>
