@@ -6,6 +6,9 @@ import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria
 import { Docente } from '../../../models/vinculacion/participantes/docente'
 import { Estudiante } from '../../../models/vinculacion/participantes/estudiante'
 
+
+import { Message } from 'primeng/api';
+
 @Component({
     selector: 'app-vinculacion-forms',
     templateUrl: './form.component.html',
@@ -109,7 +112,13 @@ export class FormsComponent implements OnInit {
         } 
     }
 
-    
+    subirLogo(){
+        console.log('logo');
+    }
+
+    subirDatosEntidad(){
+        console.log('pdf');
+    }
 
     ngOnInit() {
         //TABLE FUNCIONALIDAD

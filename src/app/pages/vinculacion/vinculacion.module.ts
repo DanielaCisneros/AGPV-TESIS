@@ -17,6 +17,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {AccordionModule} from 'primeng/accordion';
 import {ListboxModule} from 'primeng/listbox';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {FileUploadModule} from 'primeng/fileupload';
 
 import {TableModule} from 'primeng/table';
 
@@ -40,7 +41,7 @@ import { from } from 'rxjs';
         ListboxModule,
         MultiSelectModule,
         TableModule,
-        
+        FileUploadModule,
     ],
     declarations: [
         ProjectsComponent,
