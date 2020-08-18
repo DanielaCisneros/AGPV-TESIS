@@ -5,6 +5,7 @@ import { CarService } from '../../../demo/service/carservice';
 import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria/coordinador'
 import { Docente } from '../../../models/vinculacion/participantes/docente'
 import { Estudiante } from '../../../models/vinculacion/participantes/estudiante'
+import { ObjetivoEspecifico } from '../../../models/vinculacion/objetivos/objentivosEspecifivos'
 
 
 import { Message } from 'primeng/api';
@@ -18,12 +19,7 @@ export class FormsComponent implements OnInit {
     cities: SelectItem[];
     citiesListbox: SelectItem[];
     carOptions: SelectItem[];
-    cols: any[];
     cars: Car[];
-    selectedCar3: Car;
-
-
-
 
     //FECHAS
     fechaInicio: Date;
@@ -43,6 +39,10 @@ export class FormsComponent implements OnInit {
     estudiantesParticipantes:  Estudiante[] = [];
     estudianteParticipante: Estudiante;
 
+    tablaObjetivos: any[];
+    objetivos:  ObjetivoEspecifico[] = [];
+    objetivo: ObjetivoEspecifico;
+
     //NGMODEL
     nombreCoorInstBen: String;
     cargoCoorInstBen: String;
@@ -57,6 +57,12 @@ export class FormsComponent implements OnInit {
     cedulaEstuParti: String;
     especialidadEstuParti: any;
     funcionEstuParti: String;
+
+    detalleObjEspe: String;
+    indicadorObjEspe: String;
+    mediosObjEspe: String;
+    resultadosObjEspe: String;
+    actividadesObjEspe: String;
 
     constructor(private carService: CarService) {
     }
@@ -99,12 +105,12 @@ export class FormsComponent implements OnInit {
     }
 
     addEstuParti(){
-        if (this.nombreEstuParti != undefined && this.especialidadEstuParti != undefined && this.funcionEstuParti != undefined 
-            && this.nombreEstuParti != 0 && this.especialidadEstuParti != 0 && this.funcionEstuParti.length != 0) {
+        if (this.nombreEstuParti != undefined && this.funcionEstuParti != undefined 
+            && this.nombreEstuParti != 0 && this.funcionEstuParti.length != 0) {
                 this.estudiantesParticipantes.push(this.estudianteParticipante = {
                     nombreEstuParti: this.nombreEstuParti.name,
                     cedulaEstuParti: '012345',
-                    especialidadEstuParti: this.especialidadEstuParti.name,
+                    especialidadEstuParti: 'especialidad',
                     funcionEstuParti: this.funcionEstuParti
                 });
         }  else{
@@ -112,25 +118,24 @@ export class FormsComponent implements OnInit {
         } 
     }
 
-    subirLogo(){
-        console.log('logo');
-    }
-
-    subirDatosEntidad(){
-        console.log('pdf');
+    addObjetivos(){
+        if (this.detalleObjEspe != undefined && this.indicadorObjEspe != undefined && this.mediosObjEspe != undefined &&
+            this.resultadosObjEspe != undefined && this.actividadesObjEspe != undefined && this.detalleObjEspe.length != 0 &&
+            this.indicadorObjEspe.length != 0 && this.mediosObjEspe.length != 0 && this.resultadosObjEspe.length != 0 && 
+            this.actividadesObjEspe.length != 0) {
+                this.objetivos.push(this.objetivo = {
+                    detalleObjEspe: this.detalleObjEspe,
+                    indicadorObjEspe: this.indicadorObjEspe,
+                    mediosObjEspe: this.mediosObjEspe,
+                    resultadosObjEspe: this.resultadosObjEspe,
+                    actividadesObjEspe: this.actividadesObjEspe
+                })
+        } else {
+            alert('Porfavor complete todos campos para objetivos especificos');
+        }
     }
 
     ngOnInit() {
-        //TABLE FUNCIONALIDAD
-        this.carService.getCarsSmall().then((cars) => this.cars = cars);
-
-        this.cols = [
-            { field: 'vin', header: 'Docente' },
-            { field: 'year', header: 'Cargo' },
-            { field: 'brand', header: 'Horario' },
-            { field: 'color', header: 'Funciones' }
-        ];
-
         //TABLAS
         this.tablaCoorInstBene = [
             { field: 'nombreCoorInstBen', header: 'Nombre completo' },
@@ -150,6 +155,14 @@ export class FormsComponent implements OnInit {
             { field: 'cedulaEstuParti', header: 'CI' },
             { field: 'especialidadEstuParti', header: 'Especialidad' },
             { field: 'funcionEstuParti', header: 'Funciones estudiante' },
+        ]
+
+        this.tablaObjetivos = [
+            { field: 'detalleObjEspe', header: 'Objetivo' },
+            { field: 'indicadorObjEspe', header: 'Indicador' },
+            { field: 'mediosObjEspe', header: 'Medios' },
+            { field: 'resultadosObjEspe', header: 'Resultados' },
+            { field: 'actividadesObjEspe', header: 'Actividades' },
         ]
 
 
