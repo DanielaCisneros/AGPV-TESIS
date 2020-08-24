@@ -72,7 +72,8 @@ export class FormsComponent implements OnInit {
             var fechaInicio = transformDate(this.fechaInicio);
             var fechaFinal = transformDate(this.fechaFinal);
             var plazo = fechaFinal- fechaInicio;
-            this.plazo = plazo/(1000*60*60*24);
+            var meses = (plazo/(1000*60*60*24)) / 30;
+            this.plazo = Math.round(meses) + ' meses';
         }
     }
 
