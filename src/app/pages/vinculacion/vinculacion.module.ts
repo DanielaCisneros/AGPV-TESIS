@@ -18,8 +18,10 @@ import {AccordionModule} from 'primeng/accordion';
 import {ListboxModule} from 'primeng/listbox';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {FileUploadModule} from 'primeng/fileupload';
-
 import {TableModule} from 'primeng/table';
+
+//SERVICIOS
+import { ProyectoService } from '../../services/vinculacion/combos/proyectoservice'
 
 import { from } from 'rxjs';
 
@@ -46,7 +48,10 @@ import { from } from 'rxjs';
     declarations: [
         ProjectsComponent,
         FormsComponent,
-    ]
+    ],
+    providers: [
+        ProyectoService,
+    ],
 })
 export class VinculacionModule {
 }

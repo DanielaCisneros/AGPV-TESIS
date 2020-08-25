@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
-import { Car } from '../../../demo/domain/car';
-import { CarService } from '../../../demo/service/carservice';
-import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria/coordinador'
-import { Docente } from '../../../models/vinculacion/participantes/docente'
-import { Estudiante } from '../../../models/vinculacion/participantes/estudiante'
-import { ObjetivoEspecifico } from '../../../models/vinculacion/objetivos/objentivosEspecifivos'
-
-
-import { Message } from 'primeng/api';
+import { Coordinador } from '../../../models/vinculacion/institucionBeneficiaria/coordinador';
+import { Docente } from '../../../models/vinculacion/participantes/docente';
+import { Estudiante } from '../../../models/vinculacion/participantes/estudiante';
+import { ObjetivoEspecifico } from '../../../models/vinculacion/objetivos/objentivosEspecifivos';
+import { ProyectoService } from '../../../services/vinculacion/combos/proyectoservice'
 
 @Component({
     selector: 'app-vinculacion-forms',
@@ -19,7 +15,6 @@ export class FormsComponent implements OnInit {
     cities: SelectItem[];
     citiesListbox: SelectItem[];
     carOptions: SelectItem[];
-    cars: Car[];
 
     //FECHAS
     fechaInicio: Date;
@@ -29,18 +24,18 @@ export class FormsComponent implements OnInit {
     //TABLAS
     tablaCoorInstBene: any[];
     coordinadoresInstitucion: Coordinador[] = [];
-    coordinadorInstitucion: Coordinador; 
+    coordinadorInstitucion: Coordinador;
 
     tablaDoceParti: any[];
     docentesParticipantes: Docente[] = [];
     docenteParticipante: Docente;
 
     tablaEstuParti: any[];
-    estudiantesParticipantes:  Estudiante[] = [];
+    estudiantesParticipantes: Estudiante[] = [];
     estudianteParticipante: Estudiante;
 
     tablaObjetivos: any[];
-    objetivos:  ObjetivoEspecifico[] = [];
+    objetivos: ObjetivoEspecifico[] = [];
     objetivo: ObjetivoEspecifico;
 
     //NGMODEL
@@ -64,20 +59,17 @@ export class FormsComponent implements OnInit {
     resultadosObjEspe: String;
     actividadesObjEspe: String;
 
-    constructor(private carService: CarService) {
-    }
-
-    calcularPlazo (){
-        if(this.fechaInicio != undefined && this.fechaFinal != undefined){
+    calcularPlazo() {
+        if (this.fechaInicio != undefined && this.fechaFinal != undefined) {
             var fechaInicio = transformDate(this.fechaInicio);
             var fechaFinal = transformDate(this.fechaFinal);
-            var plazo = fechaFinal- fechaInicio;
-            var meses = (plazo/(1000*60*60*24)) / 30;
+            var plazo = fechaFinal - fechaInicio;
+            var meses = (plazo / (1000 * 60 * 60 * 24)) / 30;
             this.plazo = Math.round(meses) + ' meses';
         }
     }
 
-    addCoorInstBene(){
+    addCoorInstBene() {
         if (this.nombreCoorInstBen != undefined && this.cargoCoorInstBen != undefined && this.funcionCoorComu != undefined
             && this.nombreCoorInstBen.length != 0 && this.cargoCoorInstBen.length != 0 && this.funcionCoorComu.length != 0) {
             this.coordinadoresInstitucion.push(this.coordinadorInstitucion = {
@@ -85,58 +77,64 @@ export class FormsComponent implements OnInit {
                 cargoCoorInstBen: this.cargoCoorInstBen,
                 funcionCoorComu: this.funcionCoorComu,
             });
-        }  else{
+        } else {
             alert('Porfavor complete todos campos de coordinador de institucion beneficiaria');
-        } 
+        }
     }
 
-    addDoceParti(){
-        if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined 
+    addDoceParti() {
+        if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined
             && this.funcionDoceParti != undefined && this.cargoDoceParti.length != 0 && this.horarioDoceParti.length != 0
             && this.funcionDoceParti.length != 0 && this.nombreDoceParti != 0) {
-                this.docentesParticipantes.push(this.docenteParticipante = {
-                    nombreDoceParti: this.nombreDoceParti.name,
-                    cargoDoceParti: this.cargoDoceParti,
-                    horarioDoceParti: this.horarioDoceParti,
-                    funcionDoceParti: this.funcionDoceParti
-                });
-        }  else{
+            this.docentesParticipantes.push(this.docenteParticipante = {
+                nombreDoceParti: this.nombreDoceParti.name,
+                cargoDoceParti: this.cargoDoceParti,
+                horarioDoceParti: this.horarioDoceParti,
+                funcionDoceParti: this.funcionDoceParti
+            });
+        } else {
             alert('Porfavor complete todos campos deocentes participantes');
-        } 
+        }
     }
 
-    addEstuParti(){
-        if (this.nombreEstuParti != undefined && this.funcionEstuParti != undefined 
+    addEstuParti() {
+        if (this.nombreEstuParti != undefined && this.funcionEstuParti != undefined
             && this.nombreEstuParti != 0 && this.funcionEstuParti.length != 0) {
-                this.estudiantesParticipantes.push(this.estudianteParticipante = {
-                    nombreEstuParti: this.nombreEstuParti.name,
-                    cedulaEstuParti: '012345',
-                    especialidadEstuParti: 'especialidad',
-                    funcionEstuParti: this.funcionEstuParti
-                });
-        }  else{
+            this.estudiantesParticipantes.push(this.estudianteParticipante = {
+                nombreEstuParti: this.nombreEstuParti.name,
+                cedulaEstuParti: '012345',
+                especialidadEstuParti: 'especialidad',
+                funcionEstuParti: this.funcionEstuParti
+            });
+        } else {
             alert('Porfavor complete todos campos estudiantes participantes');
-        } 
+        }
     }
 
-    addObjetivos(){
+    addObjetivos() {
         if (this.detalleObjEspe != undefined && this.indicadorObjEspe != undefined && this.mediosObjEspe != undefined &&
             this.resultadosObjEspe != undefined && this.actividadesObjEspe != undefined && this.detalleObjEspe.length != 0 &&
-            this.indicadorObjEspe.length != 0 && this.mediosObjEspe.length != 0 && this.resultadosObjEspe.length != 0 && 
+            this.indicadorObjEspe.length != 0 && this.mediosObjEspe.length != 0 && this.resultadosObjEspe.length != 0 &&
             this.actividadesObjEspe.length != 0) {
-                this.objetivos.push(this.objetivo = {
-                    detalleObjEspe: this.detalleObjEspe,
-                    indicadorObjEspe: this.indicadorObjEspe,
-                    mediosObjEspe: this.mediosObjEspe,
-                    resultadosObjEspe: this.resultadosObjEspe,
-                    actividadesObjEspe: this.actividadesObjEspe
-                })
+            this.objetivos.push(this.objetivo = {
+                detalleObjEspe: this.detalleObjEspe,
+                indicadorObjEspe: this.indicadorObjEspe,
+                mediosObjEspe: this.mediosObjEspe,
+                resultadosObjEspe: this.resultadosObjEspe,
+                actividadesObjEspe: this.actividadesObjEspe
+            })
         } else {
             alert('Porfavor complete todos campos para objetivos especificos');
         }
     }
 
+    constructor(private proyectoService: ProyectoService) {
+    }
+
+
     ngOnInit() {
+        this.proyectoService.getComboPrueba().then(cars => console.log(cars));
+
         //TABLAS
         this.tablaCoorInstBene = [
             { field: 'nombreCoorInstBen', header: 'Nombre completo' },
@@ -181,7 +179,7 @@ export class FormsComponent implements OnInit {
         this.cities.push({ label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } });
 
         this.citiesListbox = this.cities.slice(1);
-        
+
         this.carOptions = [];
         this.carOptions.push({ label: 'Audi', value: 'Audi' });
         this.carOptions.push({ label: 'BMW', value: 'BMW' });
@@ -192,7 +190,7 @@ export class FormsComponent implements OnInit {
         this.carOptions.push({ label: 'Mercedes', value: 'Mercedes' });
         this.carOptions.push({ label: 'Renault', value: 'Renault' });
         this.carOptions.push({ label: 'Volkswagen', value: 'Volkswagen' });
-        this.carOptions.push({ label: 'Volvo', value: 'Volvo' });    
+        this.carOptions.push({ label: 'Volvo', value: 'Volvo' });
     }
 }
 
