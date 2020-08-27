@@ -19,19 +19,28 @@ class combosController extends Controller
   public function show(){
     $academiPreriod=AcademiPeriod::all("nombre");
     $career=Career::all('description');
-    $catalogue=Catalogue::all();
-  //  $fraquencyOfActivity=FraquencyOfActivity::all();borrar modelo
-    $LinkageAxes=LinkageAxes::all("details");
-  //  $AssignedLine=AssignedLine::all("details"); en revision
-    $BondingActivities=BondingActivities::all("details");
+    $mode=Catalogue::where('type','career_modality')->get('name');
+    //$catalogue=Catalogue::all();
+    //$fraquencyOfActivity=FraquencyOfActivity::all();borrar modelo
+    $linkageAxes=LinkageAxes::all("details");
+    //$AssignedLine=AssignedLine::all("details"); en revision
+    $bondingActivities=BondingActivities::all("details");
     //$MeansOfVerification=MeansOfVerification::all("details");
- //   $Mode=Mode::all('name');borrar modelo
+    //$Mode=Mode::all('name');borrar modelo
+    $meansOfVerification=Catalogue::where('type','Means_Verification')->get('name');
+    $araquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get('name');
+    $assignedLine=Catalogue::where('type','assigned_line')->get('name');
+    
     $combos=array(
         "academiPreriod"=>$academiPreriod,
         "career"=>$career,
-        "LinkageAxes"=>$LinkageAxes,
-        "BondingActivities"=>$BondingActivities,
-        "Catalogue"=>$catalogue
+        "mode"=>$mode,
+        "meansOfVerification"=>$meansOfVerification,
+        "assignedLine"=>$assignedLine,
+        "linkageAxes"=>$linkageAxes,
+        "bondingActivities"=>$bondingActivities,
+        //"Catalogue"=>$catalogue,
+        
       );
     return $combos;
  }

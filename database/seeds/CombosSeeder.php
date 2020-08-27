@@ -47,6 +47,40 @@ class CombosSeeder extends Seeder
             'estado'=>'ACTIVO'
 
         ]);
+        
+        //FraquencyOfActivity
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name' => 'Frecuencia de actividades',
+            'type' => 'fraquency_Activity',
+            'state_id' => 1,
+        ]);
+        //AssignedLine
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name' => 'Linea Asignada',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+        //MeansOfVerification
+        
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name' => 'medios de verificacion',
+            'type' => 'Means_Verification',
+            'state_id' => 1,
+        ]);
+
+        //LinkageAxes
+        DB::table('linkage_axes')->insert([
+        
+            'details'=>'ejesde vinculacion',
+        ]);
+
+        //BondingActivities
+        DB::table('bonding_activities')->insert([
+            'details'=>'Actividades de vinculacion',
+        ]);
 
 /*
 en caso de mas datos 

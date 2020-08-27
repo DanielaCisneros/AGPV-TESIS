@@ -11,9 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            CombosSeeder::class,
-        ]);
+       
         //states
         factory(App\Models\State::class)->create([
             'code' => '1',
@@ -489,8 +487,12 @@ class DatabaseSeeder extends Seeder
             'type' => 'canton',
             'state_id' => 1,
         ]);
+        //Career
         
+        
+        //
 
+        //role
         factory(App\Role::class)->create([
             'code' => '1',
             'name' => 'DOCENTE',
@@ -503,5 +505,8 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
+        $this->call([
+            CombosSeeder::class,
+        ]);
     }
 }
