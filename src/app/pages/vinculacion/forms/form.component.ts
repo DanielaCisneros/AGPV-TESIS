@@ -5,6 +5,7 @@ import { Docente } from '../../../models/vinculacion/participantes/docente';
 import { Estudiante } from '../../../models/vinculacion/participantes/estudiante';
 import { ObjetivoEspecifico } from '../../../models/vinculacion/objetivos/objentivosEspecifivos';
 import { ProyectoService } from '../../../services/vinculacion/combos/proyectoservice'
+import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-vinculacion-forms',
@@ -58,6 +59,18 @@ export class FormsComponent implements OnInit {
     mediosObjEspe: String;
     resultadosObjEspe: String;
     actividadesObjEspe: String;
+
+    //STEPS FORM
+    itemsInstBene: MenuItem[];
+    activeIndexitemsInstBene: Number;
+
+    itemsContex: MenuItem[];
+    activeIndexContex: Number;
+
+    items: MenuItem[];
+    activeIndex: Number;
+
+
 
     calcularPlazo() {
         if (this.fechaInicio != undefined && this.fechaFinal != undefined) {
@@ -133,6 +146,69 @@ export class FormsComponent implements OnInit {
 
 
     ngOnInit() {
+
+        this.activeIndexitemsInstBene = 0;
+        this.itemsInstBene = [{
+            label: 'Archivos adjuntos',
+            command: (event: any) => {
+                this.activeIndexitemsInstBene = 0;
+            }
+        },
+        {
+            label: 'Informacion general',
+            command: (event: any) => {
+                this.activeIndexitemsInstBene = 1;
+            }
+        },
+        {
+            label: 'Ifomracion del coordinador',
+            command: (event: any) => {
+                this.activeIndexitemsInstBene = 2;
+            }
+        },];
+
+        this.activeIndexContex = 0;
+        this.itemsContex = [{
+            label: 'Contextualizacion genral',
+            command: (event: any) => {
+                this.activeIndexitemsInstBene = 0;
+            }
+        },
+        {
+            label: 'Objetivos especificos',
+            command: (event: any) => {
+                this.activeIndexitemsInstBene = 1;
+            }
+        },]
+
+        this.activeIndex = 0;
+
+        this.items = [{
+            label: 'Personal',
+            command: (event: any) => {
+                this.activeIndex = 0;
+            }
+        },
+        {
+            label: 'Seat',
+            command: (event: any) => {
+                this.activeIndex = 1;
+            }
+        },
+        {
+            label: 'Payment',
+            command: (event: any) => {
+                this.activeIndex = 2;
+            }
+        },
+        {
+            label: 'Confirmation',
+            command: (event: any) => {
+                this.activeIndex = 3;
+            }
+        }
+        ];
+
         this.proyectoService.getComboPrueba().then(cars => console.log(cars));
 
         //TABLAS

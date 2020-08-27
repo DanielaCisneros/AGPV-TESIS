@@ -20,6 +20,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
 
+import {StepsModule} from 'primeng/steps';
+
+
 //SERVICIOS
 import { ProyectoService } from '../../services/vinculacion/combos/proyectoservice'
 
@@ -44,6 +47,7 @@ import { from } from 'rxjs';
         MultiSelectModule,
         TableModule,
         FileUploadModule,
+        StepsModule,
     ],
     declarations: [
         ProjectsComponent,
