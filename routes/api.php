@@ -17,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// get de projecto de vinculacion
 Route::get('/combo', 'proyectovinculacion\combosController@show');
+Route::get( '/project', 'proyectovinculacion\projectsController@show');
+
+// post proyecto vinculacion
+Route::post('/project', 'proyectovinculacion\projectsController@create');
+
+//delete
+//Route::delete( '/project', 'proyectovinculacion\projectsController@detroys');
+
+
+//put

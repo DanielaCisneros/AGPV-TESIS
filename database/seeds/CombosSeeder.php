@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Catalogue;
 
 class CombosSeeder extends Seeder
 {
@@ -58,8 +59,77 @@ class CombosSeeder extends Seeder
         //AssignedLine
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
-            'name' => 'Linea Asignada',
+            'name' => 'Gestion de Integracion del Proyecto',//Linea Asignada
             'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name' => 'Gestion del Alcance del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '3',
+            'name' => 'Gestion de Tiempo del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '4',
+            'name' => 'Gestion de Costo del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '5',
+            'name' => 'Gestion de la Calidad del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '6',
+            'name' => 'Gestion RRHH del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '7',
+            'name' => 'Gestion de Comunicaciones del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '8',
+            'name' => 'Gestion de Riesgos del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '9',
+            'name' => 'Gestion de Adquisiones del Proyecto',
+            'type' => 'assigned_line',
+            'state_id' => 1,
+        ]);
+        //aims_types
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name' => 'Objetivo especifico',
+            'type' => 'aims_types',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name' => 'Resultado',
+            'type' => 'aims_types',
             'state_id' => 1,
         ]);
         //MeansOfVerification
@@ -80,6 +150,32 @@ class CombosSeeder extends Seeder
         //BondingActivities
         DB::table('bonding_activities')->insert([
             'details'=>'Actividades de vinculacion',
+        ]);
+        //Institute
+        DB::table('institutions')->insert([
+            'code'=>'B1',
+            'name'=>"Instituto Benito Juarez",
+            'slogan'=>"blablablbaa",
+            'state_id'=>1,
+        ]);
+        //research_areas
+        DB::table('research_areas')->insert([
+            'details'=>'area de investigacion',
+        ]);
+        //Career
+        $modalidad=Catalogue::where( "name", "DUAL")->first();
+        DB::table('careers')->insert([
+            'institution_id'=>1,
+            'code'=>'c12',
+            'name'=>'desarrollo de software',
+            'description'=>'assdadasdljafhjkasn',
+            'modality_id'=>$modalidad->id,
+            'resolution_number'=>'dsaasdadsadsf', 
+            'title'=>'asdasffdsadsf',
+            'acronym'=>'desarrollo',
+            'type_id'=>1,
+            'state_id'=>1,
+            
         ]);
 
 /*

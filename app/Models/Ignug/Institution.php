@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Institution extends Model implements Auditable
+class Institution extends Model //implements Auditable
 {
-    use \OwenIt\Auditing\Auditable;
+//    use \OwenIt\Auditing\Auditable;
 
-    protected $connection = 'pgsql-ignug';
-    protected $fillable = [
+  //  protected $connection = 'pgsql-ignug';
+  /*   protected $fillable = [
         'code',
         'name',
         'slogan',
-    ];
+    ]; */
 
     public function setCodeAttribute($value)
     {

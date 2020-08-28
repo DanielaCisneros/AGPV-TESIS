@@ -40,7 +40,7 @@ class CreateProjectsTable extends Migration
             $table->string('justification',300);
             $table->string('authorizedBy',200);
             $table->string('developeDBy',200);
-            $table->string('schedules',300);//cronograma
+            $table->text('schedules',300);//cronograma
             $table->timestamps();
         });
     }

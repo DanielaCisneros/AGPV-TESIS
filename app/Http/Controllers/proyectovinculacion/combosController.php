@@ -18,17 +18,17 @@ class combosController extends Controller
 {
   public function show(){
     $academiPreriod=AcademiPeriod::all("nombre");
-    $career=Career::all('description');
-    $mode=Catalogue::where('type','career_modality')->get('name');
+    $career=Career::all('name');
+    $mode=Catalogue::where('type','career_modality')->get('name','id');
     //$catalogue=Catalogue::all();
     //$fraquencyOfActivity=FraquencyOfActivity::all();borrar modelo
     $linkageAxes=LinkageAxes::all("details");
-    //$AssignedLine=AssignedLine::all("details"); en revision
+    $AssignedLine=AssignedLine::all("details"); //en revision
     $bondingActivities=BondingActivities::all("details");
     //$MeansOfVerification=MeansOfVerification::all("details");
     //$Mode=Mode::all('name');borrar modelo
     $meansOfVerification=Catalogue::where('type','Means_Verification')->get('name');
-    $araquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get('name');
+    $fraquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get('name');
     $assignedLine=Catalogue::where('type','assigned_line')->get('name');
     
     $combos=array(
@@ -39,8 +39,8 @@ class combosController extends Controller
         "assignedLine"=>$assignedLine,
         "linkageAxes"=>$linkageAxes,
         "bondingActivities"=>$bondingActivities,
+        "fraquencyOfActivity"=>$fraquencyOfActivity,
         //"Catalogue"=>$catalogue,
-        
       );
     return $combos;
  }

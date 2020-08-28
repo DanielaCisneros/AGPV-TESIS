@@ -22,8 +22,8 @@ class CreateCharitableInstitutionsTable extends Migration
             $table->string('city',100);
             $table->string('province',100);
             $table->string('indirectBeneficiary',200);
-            $table->string('legalRepresentativeName',3);
-            $table->string('legalRepresentativeLastName',100);
+            $table->string('legalRepresentativeName',60);
+            $table->string('legalRepresentativeLastName',600);
             $table->string('legalRepresentativeID',100);
             $table->string('projectPostInCharge',100);
             $table->string('paeish',300);
@@ -32,7 +32,6 @@ class CreateCharitableInstitutionsTable extends Migration
             $table->string('coordinatorPost',300);
             $table->string('directBeneficiary',300);
             $table->text('COMPANYATTACHEDFILES');
-            
             $table->timestamps();
         });
     }
