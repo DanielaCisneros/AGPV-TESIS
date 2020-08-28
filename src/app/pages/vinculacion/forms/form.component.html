@@ -18,6 +18,21 @@
     <div>
         <p-tabView>
             <p-tabPanel header="Proyecto" leftIcon="pi pi-check">
+
+
+
+
+
+
+
+                <app-proyecto></app-proyecto>
+
+
+
+
+
+
+
                 <div class="p-grid ui-fluid">
                     <div class="p-grid form-group">
                         <div class="p-col-6">
@@ -69,19 +84,10 @@
                             <label for="modalidad">Modalidad:</label>
                         </div>
                         <div class="p-col-2 p-sm-6">
-                            <p-dropdown id="ciclo" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
+                            <p-dropdown id="ciclo" [options]="modes" [(ngModel)]="selectedCity4"></p-dropdown>
                         </div>
                         <div class="p-col-2 p-sm-6">
-                            <div class="p-grid">
-                                <div class="p-col-2 p-md-4">
-                                    <p-radioButton name="modalidad" value="presencial" label="Presencial"
-                                        [(ngModel)]="modalidad"></p-radioButton>
-                                </div>
-                                <div class="p-col-2 p-md-4">
-                                    <p-radioButton name="modalidad" value="dual" label="Dual" [(ngModel)]="modalidad">
-                                    </p-radioButton>
-                                </div>
-                            </div>
+                            <p-dropdown id="ciclo" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
                         </div>
                         <div class="p-col-6">
                             <label for="localizacion">Localizacion:</label>

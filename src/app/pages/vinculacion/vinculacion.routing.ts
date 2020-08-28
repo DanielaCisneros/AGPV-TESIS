@@ -12,7 +12,7 @@ export const HomeRoutes: Routes = [
             },
             {
                 path: 'forms',
-                component: FormsComponent
-            }]
+                loadChildren: () => import('./forms/form.module').then(m => m.FormModule)
+            },]
     }
 ];

@@ -1,9 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {ProjectsComponent} from './projects/project.component';
-import {FormsComponent} from './forms/form.component'
-import {HomeRoutes} from './vinculacion.routing';
 import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
@@ -19,19 +16,20 @@ import {ListboxModule} from 'primeng/listbox';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
-
 import {StepsModule} from 'primeng/steps';
 
 
 //SERVICIOS
-import { ProyectoService } from '../../services/vinculacion/combos/proyectoservice'
 
 import { from } from 'rxjs';
+import { FormRoutes } from './form.routing';
+import { ProyectoComponent } from './proyecto/proyecto.component';
+import { FormsComponent } from './form.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(HomeRoutes),
+        RouterModule.forChild(FormRoutes),
         DataViewModule,
         PanelModule,
         InputTextModule,
@@ -50,11 +48,11 @@ import { from } from 'rxjs';
         StepsModule,
     ],
     declarations: [
-        ProjectsComponent,
+        ProyectoComponent,
+        FormsComponent,
     ],
     providers: [
-        ProyectoService,
     ],
 })
-export class VinculacionModule {
+export class FormModule {
 }

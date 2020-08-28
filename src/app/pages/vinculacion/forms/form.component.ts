@@ -6,6 +6,7 @@ import { Estudiante } from '../../../models/vinculacion/participantes/estudiante
 import { ObjetivoEspecifico } from '../../../models/vinculacion/objetivos/objentivosEspecifivos';
 import { ProyectoService } from '../../../services/vinculacion/combos/proyectoservice'
 import { MenuItem } from 'primeng/api';
+import { Mode } from '../../../models/vinculacion/combosFormulario/mode'
 
 @Component({
     selector: 'app-vinculacion-forms',
@@ -16,6 +17,9 @@ export class FormsComponent implements OnInit {
     cities: SelectItem[];
     citiesListbox: SelectItem[];
     carOptions: SelectItem[];
+
+    //MODELOS
+    modes: SelectItem[];
 
     //FECHAS
     fechaInicio: Date;
@@ -144,9 +148,9 @@ export class FormsComponent implements OnInit {
     constructor(private proyectoService: ProyectoService) {
     }
 
-
     ngOnInit() {
 
+        //STEPS
         this.activeIndexitemsInstBene = 0;
         this.itemsInstBene = [{
             label: 'Archivos adjuntos',
@@ -209,7 +213,19 @@ export class FormsComponent implements OnInit {
         }
         ];
 
-        this.proyectoService.getComboPrueba().then(cars => console.log(cars));
+        
+
+        this.proyectoService.getComboPrueba().subscribe(
+            response => {
+                this.modes = [{label: 'Seleccione', value: ''}];
+                const modes = response['mode'];
+                modes.forEach(mode => {
+                    this.modes.push({'label': mode.name, 'value': 1});
+                });
+            }, 
+            error => {
+                console.log(error);
+            });
 
         //TABLAS
         this.tablaCoorInstBene = [
