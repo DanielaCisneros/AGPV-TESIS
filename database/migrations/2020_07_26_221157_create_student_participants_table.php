@@ -15,6 +15,7 @@ class CreateStudentParticipantsTable extends Migration
     {
         Schema::create('student_participants', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('state_id')->constrained('states')->default(1);
             $table->foreignId('student_id')->references('id')->on('users');//autificatio_user
             $table->foreignId('project_id')->references('id')->on('projects');
             $table->string('degree',100);//solo se llama de la carrera 

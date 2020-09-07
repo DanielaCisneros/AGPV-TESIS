@@ -15,6 +15,7 @@ class CreateTeacherParticipantsTable extends Migration
     {
         Schema::create('teacher_participants', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('state_id')->constrained('states')->default(1);
             $table->foreignId('teacher_id')->references('id')->on('teachers');//se va de toda la tabla usuarios
             $table->foreignId('project_id')->references('id')->on('projects');
             $table->string('teachingPost',100); //ser un catalogo

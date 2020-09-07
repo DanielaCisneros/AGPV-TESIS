@@ -19,6 +19,9 @@ class combosController extends Controller
   public function show(){
    // $academiPreriod=AcademiPeriod::all("nombre","id");//esta tabla por el momento va hacer creada por el ignug 
     $career=Career::all('name','id');
+    //$prueba=Career::find(1);
+    
+
     $mode=Catalogue::where('type','career_modality')->get(["name","id"]);
     //$catalogue=Catalogue::all();
    // $AssignedLine=AssignedLine::all(); //en revision
@@ -38,6 +41,7 @@ class combosController extends Controller
         "bondingActivities"=>$bondingActivities,
         "fraquencyOfActivity"=>$fraquencyOfActivity,
         //"Catalogue"=>$catalogue,
+       // "prueba"=>$prueba->modality,
       );
     return $combos;
  }

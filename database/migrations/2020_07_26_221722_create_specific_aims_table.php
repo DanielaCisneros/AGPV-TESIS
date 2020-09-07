@@ -15,6 +15,7 @@ class CreateSpecificAimsTable extends Migration
     {
         Schema::create('specific_aims', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('state_id')->constrained('states')->default(1);
             $table->foreignId('project_id')->references('id')->on('projects');
             $table->string('description',100);
             $table->string('indicator',100);

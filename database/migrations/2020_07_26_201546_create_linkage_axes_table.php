@@ -13,11 +13,11 @@ class CreateLinkageAxesTable extends Migration
      */
     public function up()
     {
-        Schema::create('linkage_axes', function (Blueprint $table) {
+       /*  Schema::create('linkage_axes', function (Blueprint $table) {
             //Ejes de vinculacion 
             $table->id();// n*n project catalogos
             $table->timestamps();
-        });
+        }); */
     }
 
     /**

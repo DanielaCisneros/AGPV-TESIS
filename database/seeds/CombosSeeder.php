@@ -49,14 +49,32 @@ class CombosSeeder extends Seeder
 
         ]); */
         
-        //FraquencyOfActivity
+        //FraquencyOfActivity Frecuencia de actividades
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
-            'name' => 'Frecuencia de actividades',
+            'name' => 'Diaria',
             'type' => 'fraquency_Activity',
             'state_id' => 1,
         ]);
-        //AssignedLine
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name' => 'Semanal',
+            'type' => 'fraquency_Activity',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '3',
+            'name' => 'Quincenal',
+            'type' => 'fraquency_Activity',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '4',
+            'name' => 'Mensual',
+            'type' => 'fraquency_Activity',
+            'state_id' => 1,
+        ]);
+        //AssignedLine 
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
             'name' => 'Gestion de Integracion del Proyecto',//Linea Asignada
@@ -141,18 +159,120 @@ class CombosSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        //LinkageAxes
+        //LinkageAxes/ejes de vinculacion
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
-            'name'=>'ejes de vinculacion',
+            'name'=>'Ambiental',
             'type' => 'linkage_axes',
             'state_id' => 1,
         ]);
-
-        //BondingActivities
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name'=>'Interculturalidad/género ',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '3',
+            'name'=>'Investigativo Académico',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '4',
+            'name'=>'Desarrollo social,comunitario',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '5',
+            'name'=>'Desarrollo local',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '6',
+            'name'=>'Economía popular y solidaria',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '7',
+            'name'=>'Desarrollo técnico y tecnológico',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '8',
+            'name'=>'Innovación',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '9',
+            'name'=>'Responsabilidad social universitaria',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '10',
+            'name'=>'Matriz productiva',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '11',
+            'name'=>'Otros',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
+        ]);
+        
+        //BondingActivities/Actividad de vinculación
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
-            'name'=>'Actividades de vinculacion',
+            'name'=>'Investigación',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name'=>'Acuerdo',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);   
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '3',
+            'name'=>'Proyecto de vinculación propio IST JME',
+            'type' => 'bonding_activitiess',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '4',
+            'name'=>'Programa de capacitación a la comunidad',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '5',
+            'name'=>'Practicas Vinculación con la comunidad',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '6',
+            'name'=>'Practicas Vinculación con la comunidad',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '7',
+            'name'=>'Convenios institucionales',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '8',
+            'name'=>'Otros',
             'type' => 'bonding_activities',
             'state_id' => 1,
         ]);
@@ -163,10 +283,16 @@ class CombosSeeder extends Seeder
             'slogan'=>"blablablbaa",
             'state_id'=>1,
         ]);
-        //research_areas
+        //research_areas/area de investigacion
         factory(App\Models\Catalogue::class)->create([
             'code' => '1',
-            'name'=>'area de investigacion',
+            'name'=>'Atención a la Ciudadanía',
+            'type' => 'research_areas',
+            'state_id' => 1,
+        ]);
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '2',
+            'name'=>'Dirección',
             'type' => 'research_areas',
             'state_id' => 1,
         ]);

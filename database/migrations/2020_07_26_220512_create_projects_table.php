@@ -15,6 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('state_id')->constrained('states')->default(1);
             $table->foreignId('charitable_institution_id')->references('id')->on('charitable_institutions');                 
            // $table->foreignId('academi_period_id')->references('id')->on('academi_periods');
             $table->foreignId('career_id')->constrained();
@@ -25,7 +26,7 @@ class CreateProjectsTable extends Migration
             $table->string('code',100);
             $table->string('name',100);
             //colocar todos los estados de regitro 
-            $table->string('state',100);//va como catalogo
+            $table->string('state_project',100);
             $table->string('field',100);//pediente
             $table->string('aim',100);//pendiente
             $table->foreignId('activities_fraquency')->references('id')->on('catalogues');
@@ -41,7 +42,7 @@ class CreateProjectsTable extends Migration
             $table->string('justification',300);
             $table->string('authorizedBy',200);//pendientes
             $table->string('developeDBy',200);
-            $table->text('schedules',300);//file se va ala tabla
+            $table->text('schedules');//file se va a la tabla
             $table->timestamps();
         });
     }
