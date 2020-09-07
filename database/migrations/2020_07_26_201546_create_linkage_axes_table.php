@@ -15,8 +15,7 @@ class CreateLinkageAxesTable extends Migration
     {
         Schema::create('linkage_axes', function (Blueprint $table) {
             //Ejes de vinculacion 
-            $table->id();
-            $table->string('details',100);
+            $table->id();// n*n project catalogos
             $table->timestamps();
         });
     }

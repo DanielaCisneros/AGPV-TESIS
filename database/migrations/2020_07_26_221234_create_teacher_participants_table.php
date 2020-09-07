@@ -15,11 +15,11 @@ class CreateTeacherParticipantsTable extends Migration
     {
         Schema::create('teacher_participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->references('id')->on('teachers');
+            $table->foreignId('teacher_id')->references('id')->on('teachers');//se va de toda la tabla usuarios
             $table->foreignId('project_id')->references('id')->on('projects');
-            $table->string('teachingPost',100);
-            $table->string('workHours',100);
-            $table->string('assingnedRoles',100);
+            $table->string('teachingPost',100); //ser un catalogo
+            $table->string('work_hour',100);
+            $table->text('assingnedRole',1000);
             $table->timestamps();
         });
     }

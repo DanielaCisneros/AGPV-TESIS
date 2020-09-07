@@ -13,7 +13,7 @@ class CreateAcademiPeriodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('academi_periods', function (Blueprint $table) {
+       /*  Schema::create('academic_periods', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('codigo', 50)->unique();
@@ -30,7 +30,7 @@ class CreateAcademiPeriodsTable extends Migration
             $table->date('fecha_inicio_especial')->nullable();
             $table->date('fecha_fin_especial')->nullable();
             $table->string('estado', 20)->default('ACTIVO');;
-        });
+        }); esta tabla se va elavborar por el ingnug*/ 
     }
 
     /**

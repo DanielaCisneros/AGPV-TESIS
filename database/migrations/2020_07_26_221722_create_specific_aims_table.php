@@ -16,13 +16,12 @@ class CreateSpecificAimsTable extends Migration
         Schema::create('specific_aims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->references('id')->on('projects');
-            $table->string('name',100);
+            $table->string('description',100);
             $table->string('indicator',100);
             $table->string('trackingMeans',100);
             $table->foreignId('aims_types')->references('id')->on('catalogues');
-            $table->string('result',100);
-            $table->string('activities',100);
-
+            //$table->bigInteger('parent_code_id')->nullable();
+            $table->foreignId('parent_code_id')->nullable()->references('id')->on('specific_aims');//tabla recusiva
             $table->timestamps();
         });
     }

@@ -16,31 +16,32 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('charitable_institution_id')->references('id')->on('charitable_institutions');                 
-            $table->foreignId('academi_period_id')->references('id')->on('academi_periods');
+           // $table->foreignId('academi_period_id')->references('id')->on('academi_periods');
             $table->foreignId('career_id')->constrained();
             $table->foreignId('assigned_line_id')->references('id')->on('catalogues');
-            $table->foreignId('bonding_activitie_id')->references('id')->on('bonding_activities');
-            $table->foreignId('research_area_id')->references('id')->on('research_areas');
-            $table->foreignId('linkage_axe_id')->references('id')->on('linkage_axes');
-            $table->string('codeAgreement',10);
-            $table->string('projectName',100);
-            $table->string('state',100);
-            $table->string('field',100);
-            $table->string('aim',100);
-            $table->foreignId('fraquency_of_activities')->references('id')->on('catalogues');
+           // $table->foreignId('bonding_activitie_id')->references('id')->on('bonding_activities');
+           // $table->foreignId('research_area_id')->references('id')->on('research_areas');
+           // $table->foreignId('linkage_axe_id')->references('id')->on('linkage_axes');
+            $table->string('code',100);
+            $table->string('name',100);
+            //colocar todos los estados de regitro 
+            $table->string('state',100);//va como catalogo
+            $table->string('field',100);//pediente
+            $table->string('aim',100);//pendiente
+            $table->foreignId('activities_fraquency')->references('id')->on('catalogues');
             $table->string('cycle',100);
-            $table->string('leadTime',3);
+            $table->double('leadTime',3,0);//catalogo 
             $table->date('deliveryDate');// tiempo
             $table->date('startDate');// tiempo
             $table->date('finishDate');//tienmpo
-            $table->string('linkingProjectGeneralDescription',300);
+            $table->string('description',300);
             $table->string('introduction',300);
             $table->string('situationalAnalysis',300);
-            $table->string('foundation',300);
+            $table->string('foundametion',300);
             $table->string('justification',300);
-            $table->string('authorizedBy',200);
+            $table->string('authorizedBy',200);//pendientes
             $table->string('developeDBy',200);
-            $table->text('schedules',300);//cronograma
+            $table->text('schedules',300);//file se va ala tabla
             $table->timestamps();
         });
     }

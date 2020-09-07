@@ -15,10 +15,10 @@ class CreateStudentParticipantsTable extends Migration
     {
         Schema::create('student_participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('students');
+            $table->foreignId('student_id')->references('id')->on('users');//autificatio_user
             $table->foreignId('project_id')->references('id')->on('projects');
-            $table->string('degree',100);
-            $table->string('assingnedRoles',100);
+            $table->string('degree',100);//solo se llama de la carrera 
+            $table->text('assingnedRoles',1000);
             $table->timestamps();
         });
     }

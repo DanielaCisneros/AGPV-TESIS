@@ -17,22 +17,19 @@ use App\Models\Vinculacion\BondingActivities;
 class combosController extends Controller
 {
   public function show(){
-    $academiPreriod=AcademiPeriod::all("nombre");
-    $career=Career::all('name');
-    $mode=Catalogue::where('type','career_modality')->get('name','id');
+   // $academiPreriod=AcademiPeriod::all("nombre","id");//esta tabla por el momento va hacer creada por el ignug 
+    $career=Career::all('name','id');
+    $mode=Catalogue::where('type','career_modality')->get(["name","id"]);
     //$catalogue=Catalogue::all();
-    //$fraquencyOfActivity=FraquencyOfActivity::all();borrar modelo
-    $linkageAxes=LinkageAxes::all("details");
-    $AssignedLine=AssignedLine::all("details"); //en revision
-    $bondingActivities=BondingActivities::all("details");
-    //$MeansOfVerification=MeansOfVerification::all("details");
-    //$Mode=Mode::all('name');borrar modelo
-    $meansOfVerification=Catalogue::where('type','Means_Verification')->get('name');
-    $fraquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get('name');
-    $assignedLine=Catalogue::where('type','assigned_line')->get('name');
+   // $AssignedLine=AssignedLine::all(); //en revision
+    $meansOfVerification=Catalogue::where('type','Means_Verification')->get(["name","id"]);
+    $fraquencyOfActivity=Catalogue::where('type','fraquency_Activity')->get(["name","id"]);
+    $assignedLine=Catalogue::where('type','assigned_line')->get(["name","id"]);
+    $linkageAxes=Catalogue::where('type','linkage_axes')->get(["name",'id']);
+    $bondingActivities=Catalogue::where('type','bonding_activities')->get(["name","id"]);
     
     $combos=array(
-        "academiPreriod"=>$academiPreriod,
+        //"academiPreriod"=>$academiPreriod,
         "career"=>$career,
         "mode"=>$mode,
         "meansOfVerification"=>$meansOfVerification,

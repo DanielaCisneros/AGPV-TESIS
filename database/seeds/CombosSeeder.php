@@ -13,7 +13,7 @@ class CombosSeeder extends Seeder
     public function run()
     {
         
-        DB::table('academi_periods')->insert([
+       /*  DB::table('academi_periods')->insert([
             'codigo'=>'2017-1', 
             'nombre'=>'MAYO 2017 - OCTUBRE 2017', 
             'fecha_inicio_periodo'=>'2017-05-01',
@@ -47,7 +47,7 @@ class CombosSeeder extends Seeder
             'fecha_fin_especial'=>'2018-10-31',
             'estado'=>'ACTIVO'
 
-        ]);
+        ]); */
         
         //FraquencyOfActivity
         factory(App\Models\Catalogue::class)->create([
@@ -142,14 +142,19 @@ class CombosSeeder extends Seeder
         ]);
 
         //LinkageAxes
-        DB::table('linkage_axes')->insert([
-        
-            'details'=>'ejesde vinculacion',
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name'=>'ejes de vinculacion',
+            'type' => 'linkage_axes',
+            'state_id' => 1,
         ]);
 
         //BondingActivities
-        DB::table('bonding_activities')->insert([
-            'details'=>'Actividades de vinculacion',
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name'=>'Actividades de vinculacion',
+            'type' => 'bonding_activities',
+            'state_id' => 1,
         ]);
         //Institute
         DB::table('institutions')->insert([
@@ -159,8 +164,11 @@ class CombosSeeder extends Seeder
             'state_id'=>1,
         ]);
         //research_areas
-        DB::table('research_areas')->insert([
-            'details'=>'area de investigacion',
+        factory(App\Models\Catalogue::class)->create([
+            'code' => '1',
+            'name'=>'area de investigacion',
+            'type' => 'research_areas',
+            'state_id' => 1,
         ]);
         //Career
         $modalidad=Catalogue::where( "name", "DUAL")->first();

@@ -13,12 +13,12 @@ class CreateResearchAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('research_areas', function (Blueprint $table) {
+        /* Schema::create('research_areas', function (Blueprint $table) {
             //areas de investigacion
             $table->id();
             $table->string('details',100);
             $table->timestamps();
-        });
+        });  p*/
     }
 
     /**
