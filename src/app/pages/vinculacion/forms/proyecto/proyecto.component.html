@@ -1,1 +1,28 @@
-<p>proyecto works!</p>
+<div class="p-grid ui-fluid">
+    <div class="p-grid form-group">
+        <div class="p-col-6">
+            <label for="titulo">Titulo:</label>
+        </div>
+        <div class="p-col-6">
+            <label for="codigo">Codigo:</label>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <input id="objeto" type="text" pInputText placeholder="Objeto">
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <input id="objeto" type="text" pInputText placeholder="Objeto">
+        </div>
+        <div class="p-col-6">
+            <label for="assignedLine">Linea de investigación:</label>
+        </div>
+        <div class="p-col-6">
+            <label for="campo">Campo:</label>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <p-dropdown id="assignedLine" [options]="assignedLines" [(ngModel)]="assignedLine"></p-dropdown>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <p-dropdown id="ciclo" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
+        </div>
+    </div>
+</div>

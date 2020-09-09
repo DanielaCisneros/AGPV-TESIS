@@ -18,13 +18,18 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
 import {StepsModule} from 'primeng/steps';
 
-
-//SERVICIOS
-
 import { from } from 'rxjs';
+
+//COMPONENTES
 import { FormRoutes } from './form.routing';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { FormsComponent } from './form.component';
+import { EstadoAcademicoComponent } from './estado-academico/estado-academico.component';
+import { InstitucionBeneficiariaComponent } from './institucion-beneficiaria/institucion-beneficiaria.component';
+import { ContextualizacionComponent } from './contextualizacion/contextualizacion.component';
+import { ParticipantesComponent } from './participantes/participantes.component';
+import { ActividadesComponent } from './actividades/actividades.component';
+import { CronogramasComponent } from './cronogramas/cronogramas.component';
 
 @NgModule({
     imports: [
@@ -50,6 +55,12 @@ import { FormsComponent } from './form.component';
     declarations: [
         ProyectoComponent,
         FormsComponent,
+        EstadoAcademicoComponent,
+        InstitucionBeneficiariaComponent,
+        ContextualizacionComponent,
+        ParticipantesComponent,
+        ActividadesComponent,
+        CronogramasComponent,
     ],
     providers: [
     ],

@@ -1,0 +1,63 @@
+<div class="p-grid ui-fluid">
+    <div class="p-grid form-group">
+        <div class="p-col-6">
+            <label for="carrera">Carrera:</label>
+        </div>
+        <div class="p-col-6">
+            <label for="objeto">Objeto:</label>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <p-dropdown id="career" [options]="careers" [(ngModel)]="career"></p-dropdown>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <input id="objeto" type="text" pInputText placeholder="Objeto">
+        </div>
+        <div class="p-col-6">
+            <label for="ciclo">Ciclo:</label>
+        </div>
+        <div class="p-col-6">
+            <label for="modalidad">Modalidad:</label>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <p-dropdown id="ciclo" [options]="ciclo" [(ngModel)]="ciclo"></p-dropdown>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <p-dropdown id="mode" [options]="modes" [(ngModel)]="mode"></p-dropdown>
+        </div>
+        <div class="p-col-6">
+            <label for="localizacion">Localizacion:</label>
+        </div>
+        <div class="p-col-6">
+            <label for="plazo">Plazo de ejecucion:</label>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <textarea id="localizacion" [rows]="5" [cols]="30" pInputTextarea placeholder="Cobertura y localizacion"
+                autoResize="autoResize"></textarea>
+        </div>
+        <div class="p-col-2 p-sm-6">
+            <input [(ngModel)]="plazo" disabled="disabled" id="plazo" type="text" pInputText
+                placeholder="Plazo de ejecucion">
+        </div>
+        <div class="p-col-4">
+            <label for="fechaPresentacion">Fecha presentacion:</label>
+        </div>
+        <div class="p-col-4">
+            <label for="fechaInicio">Fecha inicio:</label>
+        </div>
+        <div class="p-col-4">
+            <label for="fechaFinal">Fecha final:</label>
+        </div>
+        <div class="p-col-2 p-sm-4">
+            <p-calendar id="fechaPresentacion" [showIcon]="true" placeholder="Fecha presentacion">
+            </p-calendar>
+        </div>
+        <div class="p-col-2 p-sm-4">
+            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaInicio" id="fechaInicio" [showIcon]="true"
+                placeholder="Fecha inicio"></p-calendar>
+        </div>
+        <div class="p-col-2 p-sm-4">
+            <p-calendar (click)="calcularPlazo()" [(ngModel)]="fechaFinal" id="fechaFinal" [showIcon]="true"
+                placeholder="Fecha final"></p-calendar>
+        </div>
+    </div>
+</div>

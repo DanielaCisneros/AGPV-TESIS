@@ -24,7 +24,7 @@ import {StepsModule} from 'primeng/steps';
 
 
 //SERVICIOS
-import { ProyectoService } from '../../services/vinculacion/combos/proyectoservice'
+import { ProyectoService } from '../../services/vinculacion/proyecto-service.service'
 
 import { from } from 'rxjs';
 

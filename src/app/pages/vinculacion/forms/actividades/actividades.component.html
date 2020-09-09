@@ -1,0 +1,27 @@
+<div class="p-grid ui-fluid">
+    <p-accordion>
+        <p-accordionTab header="Frecuencia de las actividades" [selected]="true">
+            <div class="p-col-2 p-sm-6">
+                <div class="p-grid">
+                    <p-dropdown id="fraquencyOfActivity" [options]="fraquencyOfActivities" [(ngModel)]="fraquencyOfActivity"></p-dropdown>
+                </div>
+            </div>
+        </p-accordionTab>
+        <p-accordionTab header="Actividad de vinculación">
+            <p-listbox [options]="bondingActivitiesListbox" [(ngModel)]="selectedCity2" checkbox="checkbox" filter="filter"
+                multiple="multiple"></p-listbox>
+        </p-accordionTab>
+        <p-accordionTab header="Ejes estratégicos de vinculación con la colectividad">
+            <p-listbox [options]="citiesListbox" [(ngModel)]="selectedCity2" checkbox="checkbox" filter="filter"
+                multiple="multiple"></p-listbox>
+        </p-accordionTab>
+        <p-accordionTab header="Áreas de aplicación de los proyectos de vinculación">
+            <p-listbox [options]="citiesListbox" [(ngModel)]="selectedCity2" checkbox="checkbox" filter="filter"
+                multiple="multiple"></p-listbox>
+        </p-accordionTab>
+        <p-accordionTab header="Descripción general del proyecto">
+            <textarea id="descripcionGeneral" style="width: 1000px;" [rows]="5" [cols]="30" pInputTextarea
+                placeholder="Descripción general del proyecto" autoResize="autoResize"></textarea>
+        </p-accordionTab>
+    </p-accordion>
+</div>
