@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
-import { ProyectoService } from '../../../../services/vinculacion/proyecto-service.service'
+import { VinculacionService } from '../../../../services/vinculacion/vinculacion-service.service'
 
 @Component({
   selector: 'app-estado-academico',
@@ -17,14 +17,14 @@ export class EstadoAcademicoComponent implements OnInit {
   fechaFinal: Date;
   plazo: any;
 
-  constructor(private proyectoService: ProyectoService) { }
+  constructor(private vinculacionService: VinculacionService) { }
 
   ngOnInit(): void {
     this.dropdown();
   }
 
   dropdown() {
-    this.proyectoService.getComboPrueba().subscribe(
+    this.vinculacionService.getComboPrueba().subscribe(
       response => {
         this.modes = [{ label: 'Seleccione', value: '' }];
         this.careers = [{ label: 'Seleccione', value: '' }];

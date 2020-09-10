@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
-import { ProyectoService } from 'src/app/services/vinculacion/proyecto-service.service';
+import { VinculacionService } from 'src/app/services/vinculacion/vinculacion-service.service';
 
 @Component({
   selector: 'app-actividades',
@@ -13,9 +13,11 @@ export class ActividadesComponent implements OnInit {
   fraquencyOfActivities: SelectItem[];
   bondingActivities: SelectItem[];
   bondingActivitiesListbox: SelectItem[];
+  linkageAxes: SelectItem[];
+  linkageAxesListbox: SelectItem[];
 
 
-  constructor(private proyectoService: ProyectoService) { }
+  constructor(private vinculacionService: VinculacionService) { }
 
   ngOnInit(): void {
     this.dropdown();
@@ -23,7 +25,7 @@ export class ActividadesComponent implements OnInit {
   }
 
   dropdown() {
-    this.proyectoService.getComboPrueba().subscribe(
+    this.vinculacionService.getComboPrueba().subscribe(
       response => {
         this.fraquencyOfActivities = [{ label: 'Seleccione', value: '' }];
         const fraquencyOfActivities = response['fraquencyOfActivity'];
@@ -37,15 +39,22 @@ export class ActividadesComponent implements OnInit {
   }
 
   listbox() {
-    this.proyectoService.getComboPrueba().subscribe(
+    this.vinculacionService.getComboPrueba().subscribe(
       response => {
+        console.log(response);
         this.bondingActivities = [{ label: 'Seleccione', value: '' }];
+        this.linkageAxes = [{ label: 'Seleccione', value: '' }];
         const bondingActivities = response['bondingActivities'];
+        const linkageAxes = response['linkageAxes'];
         bondingActivities.forEach(bondingActivity => {
           this.bondingActivities.push({ 'label': bondingActivity.name, 'value': bondingActivity.id });
         });
+        linkageAxes.forEach(linkageAxe => {
+          this.linkageAxes.push({ 'label': linkageAxe.name, 'value': linkageAxe.id });
+        });
 
         this.bondingActivitiesListbox = this.bondingActivities.slice(1);
+        this.linkageAxesListbox = this.linkageAxes.slice(1);
       },
       error => {
         console.log(error);

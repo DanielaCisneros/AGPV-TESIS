@@ -24,7 +24,7 @@ import {StepsModule} from 'primeng/steps';
 
 
 //SERVICIOS
-import { ProyectoService } from '../../services/vinculacion/proyecto-service.service'
+import { VinculacionService } from '../../services/vinculacion/vinculacion-service.service'
 
 import { from } from 'rxjs';
 
@@ -53,7 +53,7 @@ import { from } from 'rxjs';
         ProjectsComponent,
     ],
     providers: [
-        ProyectoService,
+        VinculacionService,
     ],
 })
 export class VinculacionModule {

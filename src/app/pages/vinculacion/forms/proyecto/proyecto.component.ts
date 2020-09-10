@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
-import { ProyectoService } from 'src/app/services/vinculacion/proyecto-service.service';
+import { VinculacionService } from 'src/app/services/vinculacion/vinculacion-service.service';
 
 @Component({
   selector: 'app-proyecto',
@@ -10,16 +10,15 @@ export class ProyectoComponent implements OnInit {
 
   assignedLines: SelectItem[];
 
-  constructor(private proyectoService: ProyectoService) { }
+  constructor(private vinculacionService: VinculacionService) { }
 
   ngOnInit(): void {
     this.dropdown();
   }
 
   dropdown() {
-    this.proyectoService.getComboPrueba().subscribe(
+    this.vinculacionService.getComboPrueba().subscribe(
       response => {
-        console.log(response);
         this.assignedLines = [{ label: 'Seleccione', value: '' }];
         const assignedLines = response['assignedLine'];
         assignedLines.forEach(assignedLine => {
