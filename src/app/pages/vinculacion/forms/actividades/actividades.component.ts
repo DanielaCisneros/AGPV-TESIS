@@ -15,7 +15,8 @@ export class ActividadesComponent implements OnInit {
   bondingActivitiesListbox: SelectItem[];
   linkageAxes: SelectItem[];
   linkageAxesListbox: SelectItem[];
-
+  research_areas: SelectItem[];
+  research_areasListbox: SelectItem[];
 
   constructor(private vinculacionService: VinculacionService) { }
 
@@ -25,7 +26,7 @@ export class ActividadesComponent implements OnInit {
   }
 
   dropdown() {
-    this.vinculacionService.getComboPrueba().subscribe(
+    this.vinculacionService.get().subscribe(
       response => {
         this.fraquencyOfActivities = [{ label: 'Seleccione', value: '' }];
         const fraquencyOfActivities = response['fraquencyOfActivity'];
@@ -39,22 +40,27 @@ export class ActividadesComponent implements OnInit {
   }
 
   listbox() {
-    this.vinculacionService.getComboPrueba().subscribe(
+    this.vinculacionService.get().subscribe(
       response => {
         console.log(response);
         this.bondingActivities = [{ label: 'Seleccione', value: '' }];
         this.linkageAxes = [{ label: 'Seleccione', value: '' }];
+        this.research_areas = [{ label: 'Seleccione', value: '' }];
         const bondingActivities = response['bondingActivities'];
         const linkageAxes = response['linkageAxes'];
+        const research_areas = response['research_areas'];
         bondingActivities.forEach(bondingActivity => {
           this.bondingActivities.push({ 'label': bondingActivity.name, 'value': bondingActivity.id });
         });
         linkageAxes.forEach(linkageAxe => {
           this.linkageAxes.push({ 'label': linkageAxe.name, 'value': linkageAxe.id });
         });
-
+        research_areas.forEach(research_area => {
+          this.research_areas.push({ 'label': research_area.name, 'value': research_area.id });
+        });
         this.bondingActivitiesListbox = this.bondingActivities.slice(1);
         this.linkageAxesListbox = this.linkageAxes.slice(1);
+        this.research_areasListbox = this.research_areas.slice(1);
       },
       error => {
         console.log(error);

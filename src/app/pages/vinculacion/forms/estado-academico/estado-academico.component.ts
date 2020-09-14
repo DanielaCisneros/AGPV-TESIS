@@ -24,7 +24,7 @@ export class EstadoAcademicoComponent implements OnInit {
   }
 
   dropdown() {
-    this.vinculacionService.getComboPrueba().subscribe(
+    this.vinculacionService.get().subscribe(
       response => {
         this.modes = [{ label: 'Seleccione', value: '' }];
         this.careers = [{ label: 'Seleccione', value: '' }];

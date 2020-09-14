@@ -19,10 +19,11 @@
             <label for="modalidad">Modalidad:</label>
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-dropdown id="ciclo" [options]="ciclo" [(ngModel)]="ciclo"></p-dropdown>
+            <input id="ciclo" type="text" pInputText placeholder="Ciclo">
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-dropdown id="mode" [options]="modes" [(ngModel)]="mode"></p-dropdown>
+            <input [(ngModel)]="modalidad" disabled="disabled" id="modalidad" type="text" pInputText
+                placeholder="modalidad">
         </div>
         <div class="p-col-6">
             <label for="localizacion">Localizacion:</label>

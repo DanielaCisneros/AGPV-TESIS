@@ -16,7 +16,10 @@ export class ProjectsComponent implements OnInit {
 
     //rol = 'coordinador';
     rol = 'docente';
-
+    //estadoProyecto = 'pendiente';
+    //estadoProyecto = 'corregido';
+    estadoProyecto = 'rectificar';
+    //estadoProyecto = 'aprobado';
 
     constructor(private carService: CarService,) {
     }

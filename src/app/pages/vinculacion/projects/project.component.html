@@ -34,11 +34,16 @@
                     </h1>
                 </div>
             </div>
-            <div class="p-md-4" style="text-align:center">
+            <div class="p-md-2" style="text-align:center">
                 <b>{{car.color}}</b>
             </div>
-            <div class="p-md-2" style="text-align:center">
-                <p-dropdown [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
+            <div class="p-md-4" style="text-align:center">
+                <div *ngIf="estadoProyecto == 'aprobado' else emptyList" style="position:relative">
+                    <button [routerLink]="" type="button" label="Imprimir" pButton></button>
+                </div>
+                <ng-template #emptyList>
+                    <button [routerLink]="['/vinculacion/forms']" type="button" label="Editar" pButton></button>
+                </ng-template>
             </div>
         </div>
 
@@ -48,9 +53,15 @@
         <div style="padding:.5em" class="p-col-12 p-md-3">
             <p-panel [header]="car.brand" [style]="{'text-align':'center'}">
                 <img src="assets/demo/images/car/{{car.brand}}.png">
-                <div class="car-detail">{{car.year}} - {{car.color}}</div>
                 <hr class="ui-widget-content" style="border-top:0">
-                <p-dropdown [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>
+                <div class="car-detail">{{car.color}}</div>
+
+                <div *ngIf="estadoProyecto == 'aprobado' else emptyList" style="position:relative">
+                    <button [routerLink]="" type="button" label="Imprimir" pButton></button>
+                </div>
+                <ng-template #emptyList>
+                    <button [routerLink]="['/vinculacion/forms']" type="button" label="Editar" pButton></button>
+                </ng-template>
             </p-panel>
         </div>
     </ng-template>

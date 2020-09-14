@@ -17,7 +17,7 @@ export class ProyectoComponent implements OnInit {
   }
 
   dropdown() {
-    this.vinculacionService.getComboPrueba().subscribe(
+    this.vinculacionService.get().subscribe(
       response => {
         this.assignedLines = [{ label: 'Seleccione', value: '' }];
         const assignedLines = response['assignedLine'];
