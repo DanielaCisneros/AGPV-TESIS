@@ -18,8 +18,8 @@ class CreateStudentParticipantsTable extends Migration
             $table->foreignId('state_id')->constrained('states')->default(1);
             $table->foreignId('student_id')->references('id')->on('users');//autificatio_user
             $table->foreignId('project_id')->references('id')->on('projects');
-            $table->string('degree',100);//solo se llama de la carrera 
-            $table->text('assingnedRoles',1000);
+            //$table->string('degree',100);//solo se llama de la carrera 
+            $table->text('funtion_id')->constrained('catalogues');
             $table->timestamps();
         });
     }

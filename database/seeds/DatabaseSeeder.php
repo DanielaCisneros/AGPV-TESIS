@@ -507,6 +507,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CombosSeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

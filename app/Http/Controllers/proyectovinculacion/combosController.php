@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Vinculacion\AcademiPeriod;
 use App\Models\Career;
 use App\Models\Catalogue;
-use App\Models\Vinculacion\LinkageAxes;
-use App\Models\Vinculacion\AssignedLine;
-use App\Models\Vinculacion\BondingActivities;
 
 
 
