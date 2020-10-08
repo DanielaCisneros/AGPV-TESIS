@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../../demo/service/carservice';
 import { Car } from '../../../demo/domain/car';
 import { SelectItem } from 'primeng/api';
+import { VinculacionService } from '../../../services/vinculacion/vinculacion-service.service'
 
 @Component({
     selector: 'app-vinculacion-project',
@@ -17,14 +18,28 @@ export class ProjectsComponent implements OnInit {
     //rol = 'coordinador';
     rol = 'docente';
     //estadoProyecto = 'pendiente';
-    //estadoProyecto = 'corregido';
+    //estadoProyecto = 'corregido'; 
+    //estadoProyecto = 'culminado'; 
+    //estadoProyecto = 'en proceso'; 
     estadoProyecto = 'rectificar';
     //estadoProyecto = 'aprobado';
 
-    constructor(private carService: CarService,) {
+    //URLS
+    urlcombo = "project";
+
+    constructor(private carService: CarService,
+        private vinculacionService: VinculacionService,) {
     }
 
     ngOnInit() {
+        this.vinculacionService.get(this.urlcombo).subscribe(
+            response => {
+                console.log(response);
+            },
+            error => {
+              console.log(error);
+            });
+
         this.carService.getCarsLarge().then(cars => this.carsLarge = cars);
 
 

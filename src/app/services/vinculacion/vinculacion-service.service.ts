@@ -7,7 +7,7 @@ export class VinculacionService {
 
     constructor(private http: HttpClient) {}
 
-    get() {
-        return this.http.get(environment.API_URL_COMBOS);
+    get(url: string) {
+        return this.http.get(environment.API_URL_COMBOS + url);
     }
 }

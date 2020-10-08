@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ProjectsComponent} from './projects/project.component';
-import {FormsComponent} from './forms/form.component'
 import {HomeRoutes} from './vinculacion.routing';
 import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
@@ -19,9 +18,7 @@ import {ListboxModule} from 'primeng/listbox';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
-
 import {StepsModule} from 'primeng/steps';
-
 
 //SERVICIOS
 import { VinculacionService } from '../../services/vinculacion/vinculacion-service.service'

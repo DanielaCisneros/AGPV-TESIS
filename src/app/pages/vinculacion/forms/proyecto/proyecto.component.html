@@ -19,7 +19,14 @@
             <label for="campo">Campo:</label>
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-dropdown id="assignedLine" [options]="assignedLines" [(ngModel)]="assignedLine"></p-dropdown>
+            <p-autoComplete [suggestions]="assignedLines" (completeMethod)="filterAssignedLines($event)" [size]="30"
+                [minLength]="1" [dropdown]="true">
+                <ng-template let-brand pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
         </div>
         <div class="p-col-2 p-sm-6">
             <p-dropdown id="ciclo" [options]="cities" [(ngModel)]="selectedCity4"></p-dropdown>

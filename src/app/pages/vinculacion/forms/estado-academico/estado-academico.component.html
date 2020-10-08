@@ -7,7 +7,14 @@
             <label for="objeto">Objeto:</label>
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-dropdown id="career" [options]="careers" [(ngModel)]="career"></p-dropdown>
+            <p-autoComplete [suggestions]="careers" (completeMethod)="filterAssignedLines($event)" [size]="30"
+                [minLength]="1" [dropdown]="true">
+                <ng-template let-brand pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
         </div>
         <div class="p-col-2 p-sm-6">
             <input id="objeto" type="text" pInputText placeholder="Objeto">
@@ -19,10 +26,10 @@
             <label for="modalidad">Modalidad:</label>
         </div>
         <div class="p-col-2 p-sm-6">
-            <input id="ciclo" type="text" pInputText placeholder="Ciclo">
+            <input id="ciclo" type="text" pInputText placeholder="Ej: Pirmero, Segundo, Tercero">
         </div>
         <div class="p-col-2 p-sm-6">
-            <input [(ngModel)]="modalidad" disabled="disabled" id="modalidad" type="text" pInputText
+            <input [(ngModel)]="modalidad" disabled id="modalidad" type="text" pInputText
                 placeholder="modalidad">
         </div>
         <div class="p-col-6">

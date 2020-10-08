@@ -9,7 +9,6 @@ import { VinculacionService } from '../../../../services/vinculacion/vinculacion
 export class EstadoAcademicoComponent implements OnInit {
 
   //COMBOS
-  modes: SelectItem[];
   careers: SelectItem[];
 
   //FECHAS
@@ -17,25 +16,26 @@ export class EstadoAcademicoComponent implements OnInit {
   fechaFinal: Date;
   plazo: any;
 
+  //URLS 
+  urlcombo = "combo";
+
   constructor(private vinculacionService: VinculacionService) { }
 
   ngOnInit(): void {
-    this.dropdown();
   }
 
-  dropdown() {
-    this.vinculacionService.get().subscribe(
+  filterAssignedLines(event) {
+    this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
-        this.modes = [{ label: 'Seleccione', value: '' }];
-        this.careers = [{ label: 'Seleccione', value: '' }];
-        const modes = response['mode'];
-        const carrers = response['career'];
-        modes.forEach(mode => {
-          this.modes.push({ 'label': mode.name, 'value': mode.id });
-        });
-        carrers.forEach(carrer => {
-          this.careers.push({ 'label': carrer.name, 'value': carrer.id });
-        });
+        console.log(response);
+        this.careers = [];
+        const careers = response['career'];
+        for (const item of careers) {
+          const brand = item.name;
+          if (brand.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+            this.careers.push(brand);
+          }
+        }
       },
       error => {
         console.log(error);
@@ -51,7 +51,6 @@ export class EstadoAcademicoComponent implements OnInit {
       this.plazo = Math.trunc(meses) + ' meses';
     }
   }
-
 }
 
 function transformDate(date: Date) {

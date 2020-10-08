@@ -9,24 +9,30 @@ import { VinculacionService } from 'src/app/services/vinculacion/vinculacion-ser
 export class ProyectoComponent implements OnInit {
 
   assignedLines: SelectItem[];
+  
+  //URLS
+  urlcombo = "combo";
 
   constructor(private vinculacionService: VinculacionService) { }
 
   ngOnInit(): void {
-    this.dropdown();
   }
 
-  dropdown() {
-    this.vinculacionService.get().subscribe(
+  filterAssignedLines(event) {
+    this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
-        this.assignedLines = [{ label: 'Seleccione', value: '' }];
+        this.assignedLines = [];
         const assignedLines = response['assignedLine'];
-        assignedLines.forEach(assignedLine => {
-          this.assignedLines.push({ 'label': assignedLine.name, 'value': assignedLine.id });
-        });
+        for (const item of assignedLines) {
+          const brand = item.name;
+          if (brand.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+            this.assignedLines.push(brand);
+          }
+        }
       },
       error => {
         console.log(error);
       });
   }
+
 }

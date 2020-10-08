@@ -7,7 +7,24 @@
                 <h1>Logo institutción beneficiaria</h1>
             </div>
             <div class="p-md-6">
-                <h1>Copia de datos de la entidad</h1>
+                <div class="p-grid ui-fluid">
+                    <div class="p-md-6">
+                        <h1>Copia de datos de la entidad</h1>
+                    </div>
+                    <div class="p-md-2">
+                        <p-dialog header="Copia de datos de indentidad" [(visible)]="display" modal="true" showEffect="fade"
+                              [style]="{width: '400px'}">
+                        <p style="margin-top: 1em; margin-bottom: 1em">
+                            Documentos habilitantes de la entidad (cédula del representante legal, papeleta de votación, ruc, nombramiento, u otros documentos solicitados)
+                        </p>
+                        <p-footer>
+                            <button type="button" pButton (click)="display=false"
+                                    label="Aceptar"></button>
+                        </p-footer>
+                    </p-dialog>
+                        <button pButton type="text" label="Ayuda" icon="pi pi-question-circle" (click)="display=true"></button>
+                    </div>
+                </div>
             </div>
             <div class="p-col-12 p-md-6">
                 <p-fileUpload name="logoEntidad[]" url="backend" (onUpload)="subirLogo($event)" accept="image/*">
@@ -42,7 +59,7 @@
                 <label for="nombreInstitucion">Nombre completo organización/institución:</label>
             </div>
             <div class="p-col-12 p-md-4">
-                <label for="provincia">Provincia:</label>
+                <label for="provincia">Parroquia:</label>
             </div>
             <div class="p-col-12 p-md-4">
                 <label for="canton">Cantón:</label>
@@ -58,7 +75,7 @@
                 <p-dropdown id="ciclo" [options]="ciclo" [(ngModel)]="ciclo"></p-dropdown>
             </div>
             <div class="p-col-12 p-md-4">
-                <label for="parroquia">Parroquia:</label>
+                <label for="parroquia">Provincia:</label>
             </div>
             <div class="p-col-12 p-md-4">
                 <label for="ubicacion">Lugar de ubicación:</label>
@@ -73,7 +90,10 @@
                 <input id="ubicacion" type="text" pInputText placeholder="Lugar de ubicación">
             </div>
             <div class="p-col-2 p-sm-4">
-                <input id="beneficiariosDirectos" type="text" pInputText placeholder="Beneficiarios directos">
+                <input id="beneficiariosDirectos" type="text" pInputText placeholder="Ej: nombre de la entidad beneficiaria">
+            </div>
+            <div class="p-col-12 p-md-4">
+                <label for="beneficiariosDirectos">Beneficiarios indirectos:</label>
             </div>
             <div class="p-col-12 p-md-4">
                 <label for="nombreRepreLegal">Nombre del representante legal:</label>
@@ -81,17 +101,20 @@
             <div class="p-col-12 p-md-4">
                 <label for="RucRepreLegal">Cédula o RUC del representante legal:</label>
             </div>
-            <div class="p-col-12 p-md-4">
+            <div class="p-col-2 p-sm-4">
+                <input id="nombreRepreLegal" type="text" pInputText placeholder="">
+            </div>
+            <div class="p-col-2 p-sm-4">
+                <input id="RucRepreLegal" type="text" pInputText placeholder="Nombre del representante legal">
+            </div>
+            <div class="p-col-2 p-sm-4">
+                <input id="" type="text" pInputText placeholder="Cédula o RUC del representante legal">
+            </div>
+            <div class="p-col-12 p-md-12">
                 <label for="">Funcion:</label>
             </div>
             <div class="p-col-2 p-sm-4">
-                <input id="nombreRepreLegal" type="text" pInputText placeholder="Nombre del representante legal">
-            </div>
-            <div class="p-col-2 p-sm-4">
-                <input id="RucRepreLegal" type="text" pInputText placeholder="Cédula o RUC del representante legal">
-            </div>
-            <div class="p-col-2 p-sm-4">
-                <input id="" type="text" pInputText placeholder="Funcion">
+                <input id="" type="text" pInputText placeholder="Ej: madres solteras, personas indigentes">
             </div>
         </div>
     </div>
@@ -122,7 +145,7 @@
                 </div>
                 <div class="p-col-10">
                     <input [(ngModel)]="funcionCoorComu" id="funcionComunidad" type="text" pInputText
-                        placeholder="Función que cumple en el proyecto de vinculación con la comunidad">
+                        placeholder="Ej: supervisor, coordinador, etc">
                 </div>
                 <div class="p-col-12 p-md-3">
                     <button pButton type="button" label="Añadir" icon="pi pi-plus" (click)="addCoorInstBene()"></button>

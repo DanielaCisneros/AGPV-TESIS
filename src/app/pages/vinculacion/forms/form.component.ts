@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormsComponent implements OnInit {
 
+    text: string = 'text';
+    
+    // tiene que venir con informacion de observaciones
+    observacion: string = 'tiene que venir con informacion de observaciones';
+
     constructor() {
     }
 

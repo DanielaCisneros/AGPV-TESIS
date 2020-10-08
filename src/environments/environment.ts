@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL_COMBOS: 'http://127.0.0.1:8000/api/combo',
+  API_URL_COMBOS: 'http://127.0.0.1:8000/api/vinculacion/',
 };
 
 /*

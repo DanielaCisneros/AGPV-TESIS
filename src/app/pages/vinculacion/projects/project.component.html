@@ -28,16 +28,21 @@
             <div class="p-md-4 car-details">
                 <div class="p-grid">
                     <h1>
-                        <div class="p-col-10 p-sm-6">
-                            <b>{{car.brand}}</b>
+                        <div>
+                            <!-- <b>{{car.brand}}</b> -->
+                            <b>Nombre del Proyecto</b>
                         </div>
                     </h1>
                 </div>
             </div>
             <div class="p-md-2" style="text-align:center">
-                <b>{{car.color}}</b>
+                <!-- <b>{{car.color}}</b> --> 
+                <b>Fecha inicio - fin</b>
             </div>
-            <div class="p-md-4" style="text-align:center">
+            <div class="p-md-2" style="text-align:center">
+                <b>Estado</b>
+            </div>
+            <div class="p-md-2" style="text-align:center">
                 <div *ngIf="estadoProyecto == 'aprobado' else emptyList" style="position:relative">
                     <button [routerLink]="" type="button" label="Imprimir" pButton></button>
                 </div>
@@ -54,8 +59,9 @@
             <p-panel [header]="car.brand" [style]="{'text-align':'center'}">
                 <img src="assets/demo/images/car/{{car.brand}}.png">
                 <hr class="ui-widget-content" style="border-top:0">
-                <div class="car-detail">{{car.color}}</div>
-
+                <!-- <div class="car-detail">{{car.color}}</div> -->
+                <div class="car-detail">Fecha inicio - fin</div>
+                <div class="car-detail">Estado</div>
                 <div *ngIf="estadoProyecto == 'aprobado' else emptyList" style="position:relative">
                     <button [routerLink]="" type="button" label="Imprimir" pButton></button>
                 </div>

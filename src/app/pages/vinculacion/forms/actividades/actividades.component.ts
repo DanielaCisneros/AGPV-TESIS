@@ -17,6 +17,7 @@ export class ActividadesComponent implements OnInit {
   linkageAxesListbox: SelectItem[];
   research_areas: SelectItem[];
   research_areasListbox: SelectItem[];
+  urlcombo = "combo";
 
   constructor(private vinculacionService: VinculacionService) { }
 
@@ -26,7 +27,7 @@ export class ActividadesComponent implements OnInit {
   }
 
   dropdown() {
-    this.vinculacionService.get().subscribe(
+    this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
         this.fraquencyOfActivities = [{ label: 'Seleccione', value: '' }];
         const fraquencyOfActivities = response['fraquencyOfActivity'];
@@ -40,9 +41,8 @@ export class ActividadesComponent implements OnInit {
   }
 
   listbox() {
-    this.vinculacionService.get().subscribe(
+    this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
-        console.log(response);
         this.bondingActivities = [{ label: 'Seleccione', value: '' }];
         this.linkageAxes = [{ label: 'Seleccione', value: '' }];
         this.research_areas = [{ label: 'Seleccione', value: '' }];

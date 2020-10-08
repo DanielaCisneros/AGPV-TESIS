@@ -17,6 +17,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TableModule} from 'primeng/table';
 import {StepsModule} from 'primeng/steps';
+import {DialogModule} from 'primeng/dialog';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 import { from } from 'rxjs';
 
@@ -30,6 +32,7 @@ import { ContextualizacionComponent } from './contextualizacion/contextualizacio
 import { ParticipantesComponent } from './participantes/participantes.component';
 import { ActividadesComponent } from './actividades/actividades.component';
 import { CronogramasComponent } from './cronogramas/cronogramas.component';
+import { ObservacionesComponent } from './observaciones/observaciones.component'
 
 @NgModule({
     imports: [
@@ -51,6 +54,8 @@ import { CronogramasComponent } from './cronogramas/cronogramas.component';
         TableModule,
         FileUploadModule,
         StepsModule,
+        DialogModule,
+        AutoCompleteModule,
     ],
     declarations: [
         ProyectoComponent,
@@ -61,6 +66,7 @@ import { CronogramasComponent } from './cronogramas/cronogramas.component';
         ParticipantesComponent,
         ActividadesComponent,
         CronogramasComponent,
+        ObservacionesComponent,
     ],
     providers: [
     ],

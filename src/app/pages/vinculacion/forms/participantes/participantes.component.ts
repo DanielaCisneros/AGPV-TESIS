@@ -25,7 +25,6 @@ export class ParticipantesComponent implements OnInit {
 
   nombreEstuParti: any;
   cedulaEstuParti: String;
-  especialidadEstuParti: any;
   funcionEstuParti: String;
 
   constructor() { }
@@ -74,7 +73,6 @@ export class ParticipantesComponent implements OnInit {
       this.estudiantesParticipantes.push(this.estudianteParticipante = {
         nombreEstuParti: this.nombreEstuParti.name,
         cedulaEstuParti: '012345',
-        especialidadEstuParti: 'especialidad',
         funcionEstuParti: this.funcionEstuParti
       });
     } else {

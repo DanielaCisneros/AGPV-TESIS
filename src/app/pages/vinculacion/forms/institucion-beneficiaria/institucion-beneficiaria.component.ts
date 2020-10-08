@@ -22,6 +22,8 @@ export class InstitucionBeneficiariaComponent implements OnInit {
   cargoCoorInstBen: String;
   funcionCoorComu: String;
 
+  //DIALOG
+  display: boolean;
 
   constructor() { }
 

@@ -17,26 +17,29 @@
     </div>
     <div>
         <p-tabView>
-            <p-tabPanel header="Proyecto" leftIcon="pi pi-check">
+            <p-tabPanel header="Proyecto" leftIcon="pi pi-paperclip">
                 <app-proyecto></app-proyecto>
             </p-tabPanel>
-            <p-tabPanel header="Estado académico" leftIcon="pi pi-check">
+            <p-tabPanel header="Estado académico" leftIcon="pi pi-id-card">
                 <app-estado-academico></app-estado-academico>
             </p-tabPanel>
-            <p-tabPanel header="Institutción beneficiaria" leftIcon="pi pi-phone">
+            <p-tabPanel header="Institutción beneficiaria" leftIcon="pi pi-briefcase">
                 <app-institucion-beneficiaria></app-institucion-beneficiaria>
             </p-tabPanel>
-            <p-tabPanel header="Contextualización" leftIcon="pi pi-check">
+            <p-tabPanel header="Contextualización" leftIcon="pi pi-bars">
                 <app-contextualizacion></app-contextualizacion>
             </p-tabPanel>
-            <p-tabPanel header="Participantes" leftIcon="pi pi-user">
+            <p-tabPanel header="Participantes" leftIcon="pi pi-users">
                 <app-participantes></app-participantes>
             </p-tabPanel>
-            <p-tabPanel header="Actividades" leftIcon="pi pi-user">
+            <p-tabPanel header="Actividades" leftIcon="pi pi-list">
                 <app-actividades></app-actividades>
             </p-tabPanel>
-            <p-tabPanel header="Cronogramas" leftIcon="pi pi-user">
+            <p-tabPanel header="Cronogramas" leftIcon="pi pi-calendar">
                 <app-cronogramas></app-cronogramas>
+            </p-tabPanel>
+            <p-tabPanel [headerStyle]="{'background-color': 'red'}" *ngIf="observacion" header="Observaciones">
+                <app-observaciones></app-observaciones>
             </p-tabPanel>
         </p-tabView>
     </div>
