@@ -6,7 +6,7 @@ import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
@@ -56,6 +56,7 @@ import { ObservacionesComponent } from './observaciones/observaciones.component'
         StepsModule,
         DialogModule,
         AutoCompleteModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         ProyectoComponent,

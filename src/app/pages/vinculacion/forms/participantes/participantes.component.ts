@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Docente } from 'src/app/models/vinculacion/participantes/docente';
 import { Estudiante } from 'src/app/models/vinculacion/participantes/estudiante';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-participantes',
   templateUrl: './participantes.component.html',
 })
 export class ParticipantesComponent implements OnInit {
+
+  //VARIABLES FORM CONTROL
+  form: FormGroup;
 
   //TABLA
   tablaDoceParti: any[];
@@ -17,21 +22,33 @@ export class ParticipantesComponent implements OnInit {
   estudiantesParticipantes: Estudiante[] = [];
   estudianteParticipante: Estudiante;
 
-  //NGMODEL
-  nombreDoceParti: any;
-  cargoDoceParti: String;
-  horarioDoceParti: String;
-  funcionDoceParti: String;
-
-  nombreEstuParti: any;
-  cedulaEstuParti: String;
-  funcionEstuParti: String;
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { 
+    this.buildForm();
+  }
 
   ngOnInit(): void {
     this.tablaDocentes();
     this.tablaEstudiantes();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      docente: [''],
+      cargo: [''],
+      horarioTrabajo: [''],
+      funcionesDocente: [''],
+      estudiante: [''],
+      ciEstudiante: [''],
+      funcionesEstud: [''],
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value => {
+      console.log(value);
+    });
   }
 
   tablaDocentes() {
@@ -52,6 +69,7 @@ export class ParticipantesComponent implements OnInit {
     ]
   }
 
+  /* 
   addDoceParti() {
     if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined
       && this.funcionDoceParti != undefined && this.cargoDoceParti.length != 0 && this.horarioDoceParti.length != 0
@@ -78,6 +96,6 @@ export class ParticipantesComponent implements OnInit {
     } else {
       alert('Porfavor complete todos campos estudiantes participantes');
     }
-  }
+  }*/
 
 }

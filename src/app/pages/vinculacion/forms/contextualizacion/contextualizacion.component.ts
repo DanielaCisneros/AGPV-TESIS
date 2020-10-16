@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { ObjetivoEspecifico } from 'src/app/models/vinculacion/objetivos/objentivosEspecifivos';
 
 @Component({
@@ -7,6 +9,9 @@ import { ObjetivoEspecifico } from 'src/app/models/vinculacion/objetivos/objenti
   templateUrl: './contextualizacion.component.html',
 })
 export class ContextualizacionComponent implements OnInit {
+
+  //VARIABLES FORM CONTROL
+  form: FormGroup;
 
   //STEPS
   itemsContex: MenuItem[];
@@ -17,18 +22,36 @@ export class ContextualizacionComponent implements OnInit {
   objetivos: ObjetivoEspecifico[] = [];
   objetivo: ObjetivoEspecifico;
 
-  //NGMODEL
-  detalleObjEspe: String;
-  indicadorObjEspe: String;
-  mediosObjEspe: String;
-  resultadosObjEspe: String;
-  actividadesObjEspe: String;
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.buildForm();
     this.steps();
     this.tablaObj();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      introduccion: [''],
+      fundamentacion: [''],
+      diagnostico: [''],
+      justificaion: [''],
+      ObjetivoGenereal: [''],
+      indicador: [''],
+      medioVerificacionGene: [''],
+      objetivoEspecifico: [''],
+      medioVerificacionEspe: [''],
+      resultado: [''],
+      actividad: [''],
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value => {
+      console.log(value);
+    });
   }
 
   steps() {
@@ -57,6 +80,7 @@ export class ContextualizacionComponent implements OnInit {
     ]
   }
 
+  /* 
   addObjetivos() {
     if (this.detalleObjEspe != undefined && this.indicadorObjEspe != undefined && this.mediosObjEspe != undefined &&
       this.resultadosObjEspe != undefined && this.actividadesObjEspe != undefined && this.detalleObjEspe.length != 0 &&
@@ -78,6 +102,6 @@ export class ContextualizacionComponent implements OnInit {
     } else {
       alert('Porfavor complete todos campos para objetivos especificos');
     }
-  }
+  }*/
 
 }

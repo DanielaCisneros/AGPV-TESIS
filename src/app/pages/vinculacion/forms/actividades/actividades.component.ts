@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { VinculacionService } from 'src/app/services/vinculacion/vinculacion-service.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.component.html',
 })
 export class ActividadesComponent implements OnInit {
+
+  //VARIABLES FORM CONTROL
+  form: FormGroup;
 
   cities: SelectItem[];
   citiesListbox: SelectItem[];
@@ -19,11 +24,32 @@ export class ActividadesComponent implements OnInit {
   research_areasListbox: SelectItem[];
   urlcombo = "combo";
 
-  constructor(private vinculacionService: VinculacionService) { }
+  constructor(private vinculacionService: VinculacionService,
+    private formBuilder: FormBuilder) {
+    this.buildForm();
+  }
 
   ngOnInit(): void {
     this.dropdown();
     this.listbox();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      frecuenciaActiv: [''],
+      actividadesVincu: [''],
+      ejesEstrategicos: [''],
+      areasAplicacion: [''],
+      descripGeneral: [''],
+    });
+
+    this.form.valueChanges
+      .pipe(
+        debounceTime(500)
+      )
+      .subscribe(value => {
+        console.log(value);
+      });
   }
 
   dropdown() {

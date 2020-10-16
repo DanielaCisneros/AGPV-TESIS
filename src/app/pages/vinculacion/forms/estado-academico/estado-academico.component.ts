@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { VinculacionService } from '../../../../services/vinculacion/vinculacion-service.service'
 
 @Component({
@@ -8,26 +10,47 @@ import { VinculacionService } from '../../../../services/vinculacion/vinculacion
 })
 export class EstadoAcademicoComponent implements OnInit {
 
+  //VARIABLES FORM CONTROL
+  form: FormGroup;
+
   //COMBOS
   careers: SelectItem[];
-
-  //FECHAS
-  fechaInicio: Date;
-  fechaFinal: Date;
-  plazo: any;
 
   //URLS 
   urlcombo = "combo";
 
-  constructor(private vinculacionService: VinculacionService) { }
+  constructor(private vinculacionService: VinculacionService,
+    private formBuilder: FormBuilder) {
+    this.buildForm();
+  }
 
   ngOnInit(): void {
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      carrer: [''],
+      objeto: [''],
+      ciclo: [''],
+      modalidad: [''],
+      localizacion: [''],
+      plazo: [''],
+      fechaPresentacion: [''],
+      fechaInicio: [''],
+      fechaFinal: [''],
+    });
+    this.form.valueChanges
+      .pipe(
+        debounceTime(500)
+      )
+      .subscribe(value => {
+        this.calcularPlazo(value.fechaInicio, value.fechaFinal);
+      });
   }
 
   filterAssignedLines(event) {
     this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
-        console.log(response);
         this.careers = [];
         const careers = response['career'];
         for (const item of careers) {
@@ -42,13 +65,14 @@ export class EstadoAcademicoComponent implements OnInit {
       });
   }
 
-  calcularPlazo() {
-    if (this.fechaInicio != undefined && this.fechaFinal != undefined) {
-      var fechaInicio = transformDate(this.fechaInicio);
-      var fechaFinal = transformDate(this.fechaFinal);
-      var plazo = fechaFinal - fechaInicio;
+  calcularPlazo(fechaInicio, fechaFin) {
+    if (fechaInicio != undefined && fechaInicio.length != 0
+      && fechaFin != undefined && fechaFin.length != 0) {
+      var inicio = transformDate(fechaInicio);
+      var final = transformDate(fechaFin);
+      var plazo = final - inicio;
       var meses = (plazo / (1000 * 60 * 60 * 24)) / 30;
-      this.plazo = Math.trunc(meses) + ' meses';
+      this.form.controls['plazo'].setValue(Math.trunc(meses) + ' meses');
     }
   }
 }

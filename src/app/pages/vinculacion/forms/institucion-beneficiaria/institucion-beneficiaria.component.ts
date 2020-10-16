@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { Coordinador } from 'src/app/models/vinculacion/institucionBeneficiaria/coordinador';
 
 @Component({
@@ -7,6 +9,9 @@ import { Coordinador } from 'src/app/models/vinculacion/institucionBeneficiaria/
   templateUrl: './institucion-beneficiaria.component.html',
 })
 export class InstitucionBeneficiariaComponent implements OnInit {
+
+  //VARIABLES FORM CONTROL
+  form: FormGroup;
 
   //STEPS
   itemsInstBene: MenuItem[];
@@ -17,19 +22,42 @@ export class InstitucionBeneficiariaComponent implements OnInit {
   coordinadoresInstitucion: Coordinador[] = [];
   coordinadorInstitucion: Coordinador;
 
-  //NGMODEL
-  nombreCoorInstBen: String;
-  cargoCoorInstBen: String;
-  funcionCoorComu: String;
-
   //DIALOG
   display: boolean;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.buildForm();
+   }
 
   ngOnInit(): void {
     this.steps();
     this.tablaCoor();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      nombreInstitucion: [''],
+      parroquia: [''],
+      canton: [''],
+      provincia: [''],
+      ubicacion: [''],
+      beneficiariosDirectos: [''],
+      beneficiariosIndirectos: [''],
+      nombreRepreLegal: [''],
+      RucRepreLegal: [''],
+      funcion: [''],
+      nombreCoordinador: [''],
+      cargoInstitucion: [''],
+      funcionCoorComu: [''],      
+    });
+
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value => {
+      console.log(value);
+    });
   }
 
   steps() {
@@ -47,7 +75,7 @@ export class InstitucionBeneficiariaComponent implements OnInit {
       }
     },
     {
-      label: 'Ifomracion del coordinador',
+      label: 'Informacion del coordinador',
       command: (event: any) => {
         this.activeIndexitemsInstBene = 2;
       }
@@ -62,6 +90,7 @@ export class InstitucionBeneficiariaComponent implements OnInit {
     ]
   }
 
+  /* 
   addCoorInstBene() {
     if (this.nombreCoorInstBen != undefined && this.cargoCoorInstBen != undefined && this.funcionCoorComu != undefined
       && this.nombreCoorInstBen.length != 0 && this.cargoCoorInstBen.length != 0 && this.funcionCoorComu.length != 0) {
@@ -77,4 +106,5 @@ export class InstitucionBeneficiariaComponent implements OnInit {
       alert('Porfavor complete todos campos de coordinador de institucion beneficiaria');
     }
   }
+  */
 }
