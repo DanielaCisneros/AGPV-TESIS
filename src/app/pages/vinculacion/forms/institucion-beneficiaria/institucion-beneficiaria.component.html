@@ -1,6 +1,6 @@
 <p-steps [model]="itemsInstBene" [(activeIndex)]="activeIndexitemsInstBene" [readonly]="false">
 </p-steps>
-<form [formGroup]="form" novalidate>
+<form [formGroup]="form" novalidate (ngSubmit)="addCoorInstBene($event)">
     <div class="p-col-12 p-lg-12" *ngIf="activeIndexitemsInstBene==0">
         <div class="p-col-12 p-lg-12">
             <div class="p-grid ui-fluid">
@@ -13,17 +13,18 @@
                             <h1>Copia de datos de la entidad</h1>
                         </div>
                         <div class="p-md-2">
-                            <p-dialog header="Copia de datos de indentidad" [(visible)]="display" modal="true" showEffect="fade"
-                                  [style]="{width: '400px'}">
-                            <p style="margin-top: 1em; margin-bottom: 1em">
-                                Documentos habilitantes de la entidad (cédula del representante legal, papeleta de votación, ruc, nombramiento, u otros documentos solicitados)
-                            </p>
-                            <p-footer>
-                                <button type="button" pButton (click)="display=false"
-                                        label="Aceptar"></button>
-                            </p-footer>
-                        </p-dialog>
-                            <button pButton type="text" label="Ayuda" icon="pi pi-question-circle" (click)="display=true"></button>
+                            <p-dialog header="Copia de datos de indentidad" [(visible)]="display" modal="true"
+                                showEffect="fade" [style]="{width: '400px'}">
+                                <p style="margin-top: 1em; margin-bottom: 1em">
+                                    Documentos habilitantes de la entidad (cédula del representante legal, papeleta de
+                                    votación, ruc, nombramiento, u otros documentos solicitados)
+                                </p>
+                                <p-footer>
+                                    <button type="button" pButton (click)="display=false" label="Aceptar"></button>
+                                </p-footer>
+                            </p-dialog>
+                            <button pButton type="text" label="Ayuda" icon="pi pi-question-circle"
+                                (click)="display=true"></button>
                         </div>
                     </div>
                 </div>
@@ -70,24 +71,24 @@
                         placeholder="Nombre completo organización/institución">
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <p-autoComplete formControlName="parroquia" [suggestions]="suggestions" (completeMethod)="completeMethod($event)" [size]="30"
-                    [minLength]="1" [dropdown]="true">
-                    <ng-template let-brand pTemplate="item">
-                        <div class="ui-helper-clearfix">
-                            <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
-                        </div>
-                    </ng-template>
-                </p-autoComplete>
+                    <p-autoComplete formControlName="parroquia" [suggestions]="suggestions"
+                        (completeMethod)="completeMethod($event)" [size]="30" [minLength]="1" [dropdown]="true">
+                        <ng-template let-brand pTemplate="item">
+                            <div class="ui-helper-clearfix">
+                                <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <p-autoComplete formControlName="canton" [suggestions]="suggestions" (completeMethod)="completeMethod($event)" [size]="30"
-                    [minLength]="1" [dropdown]="true">
-                    <ng-template let-brand pTemplate="item">
-                        <div class="ui-helper-clearfix">
-                            <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
-                        </div>
-                    </ng-template>
-                </p-autoComplete>
+                    <p-autoComplete formControlName="canton" [suggestions]="suggestions"
+                        (completeMethod)="completeMethod($event)" [size]="30" [minLength]="1" [dropdown]="true">
+                        <ng-template let-brand pTemplate="item">
+                            <div class="ui-helper-clearfix">
+                                <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
                 <div class="p-col-12 p-md-4">
                     <label for="parroquia">Provincia:</label>
@@ -99,20 +100,21 @@
                     <label for="beneficiariosDirectos">Beneficiarios directos:</label>
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <p-autoComplete formControlName="provincia" [suggestions]="suggestions" (completeMethod)="completeMethod($event)" [size]="30"
-                    [minLength]="1" [dropdown]="true">
-                    <ng-template let-brand pTemplate="item">
-                        <div class="ui-helper-clearfix">
-                            <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
-                        </div>
-                    </ng-template>
-                </p-autoComplete>
+                    <p-autoComplete formControlName="provincia" [suggestions]="suggestions"
+                        (completeMethod)="completeMethod($event)" [size]="30" [minLength]="1" [dropdown]="true">
+                        <ng-template let-brand pTemplate="item">
+                            <div class="ui-helper-clearfix">
+                                <div style="font-size:18px;margin:10px 10px 0 0">{{brand}}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
                 <div class="p-col-2 p-sm-4">
                     <input formControlName="ubicacion" type="text" pInputText placeholder="Lugar de ubicación">
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <input formControlName="beneficiariosDirectos" type="text" pInputText placeholder="Ej: nombre de la entidad beneficiaria">
+                    <input formControlName="beneficiariosDirectos" type="text" pInputText
+                        placeholder="Ej: nombre de la entidad beneficiaria">
                 </div>
                 <div class="p-col-12 p-md-4">
                     <label for="beneficiariosIndirectos">Beneficiarios indirectos:</label>
@@ -127,16 +129,19 @@
                     <input formControlName="beneficiariosIndirectos" type="text" pInputText placeholder="">
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <input formControlName="nombreRepreLegal" type="text" pInputText placeholder="Nombre del representante legal">
+                    <input formControlName="nombreRepreLegal" type="text" pInputText
+                        placeholder="Nombre del representante legal">
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <input formControlName="RucRepreLegal" type="text" pInputText placeholder="Cédula o RUC del representante legal">
+                    <input formControlName="RucRepreLegal" type="text" pInputText
+                        placeholder="Cédula o RUC del representante legal">
                 </div>
                 <div class="p-col-12 p-md-12">
                     <label for="funcion">Funcion:</label>
                 </div>
                 <div class="p-col-2 p-sm-4">
-                    <input formControlName="funcion" type="text" pInputText placeholder="Ej: madres solteras, personas indigentes">
+                    <input formControlName="funcion" type="text" pInputText
+                        placeholder="Ej: madres solteras, personas indigentes">
                 </div>
             </div>
         </div>
@@ -146,19 +151,19 @@
             <div class="p-grid ui-fluid">
                 <div class="p-lg-6">
                     <div class="p-col-12">
-                        <label for="nombreCoordinador">Nombres y apellidos de coordinador(es) de institución
+                        <label for="nombreCoorInstBen">Nombres y apellidos de coordinador(es) de institución
                             beneficiaria:</label>
                     </div>
                     <div class="p-col-10">
-                        <input formControlName="nombreCoordinador" type="text" pInputText
+                        <input formControlName="nombreCoorInstBen" type="text" pInputText
                             placeholder="Nombres y apellidos de coordinador(es) de institución beneficiaria">
                     </div>
                     <div class="p-col-12">
-                        <label for="cargoInstitucion">Cargo o funcion de la institución
+                        <label for="cargoCoorInstBen">Cargo o funcion de la institución
                             beneficiaria:</label>
                     </div>
                     <div class="p-col-10">
-                        <input formControlName="cargoInstitucion" type="text" pInputText
+                        <input formControlName="cargoCoorInstBen" type="text" pInputText
                             placeholder="Cargo o funcion de la institución beneficiaria">
                     </div>
                     <div class="p-col-12">
@@ -170,12 +175,14 @@
                             placeholder="Ej: supervisor, coordinador, etc">
                     </div>
                     <div class="p-col-12 p-md-3">
-                        <button pButton type="button" label="Añadir" icon="pi pi-plus" (click)="addCoorInstBene()"></button>
+                        <button pButton type="submit" [disabled]="form.invalid" label="Añadir"
+                            icon="pi pi-plus"></button>
                     </div>
                 </div>
                 <div class="p-lg-6">
                     <p-table [columns]="tablaCoorInstBene" [value]="coordinadoresInstitucion" selectionMode="single"
-                        dataKey="vin" [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3" [responsive]="true">
+                        dataKey="vin" [style]="{'margin-bottom':'20px'}" [(selection)]="selectedCar3"
+                        [responsive]="true">
                         <ng-template pTemplate="caption">
                             COORDINADOR(ES) DE INSTITUCIÓN BENEFICIARIA
                         </ng-template>

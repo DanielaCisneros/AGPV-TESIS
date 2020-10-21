@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { ObjetivoEspecifico } from 'src/app/models/vinculacion/objetivos/objentivosEspecifivos';
 
@@ -39,18 +39,11 @@ export class ContextualizacionComponent implements OnInit {
       ObjetivoGenereal: [''],
       indicador: [''],
       medioVerificacionGene: [''],
-      objetivoEspecifico: [''],
-      medioVerificacionEspe: [''],
-      resultado: [''],
-      actividad: [''],
-    });
-
-    this.form.valueChanges
-    .pipe(
-      debounceTime(500)
-    )
-    .subscribe(value => {
-      console.log(value);
+      objetivoEspecifico: ['', [Validators.required]],
+      medioVerificacionEspe: ['', [Validators.required]],
+      resultado: ['', [Validators.required]],
+      actividad: ['', [Validators.required]],
+      indicadorEspe: ['', [Validators.required]],
     });
   }
 
@@ -80,12 +73,31 @@ export class ContextualizacionComponent implements OnInit {
     ]
   }
 
+  addObjEspe(event: Event) {
+    event.preventDefault();
+      const values = this.form.value;
+      this.objetivos.push(this.objetivo = {
+        detalleObjEspe: values.objetivoEspecifico,
+        indicadorObjEspe: values.indicadorEspe,
+        mediosObjEspe: values.medioVerificacionEspe,
+        resultadosObjEspe: values.resultado,
+        actividadesObjEspe: values.actividad
+      });
+      this.form.controls['objetivoEspecifico'].setValue('');
+      this.form.controls['indicadorEspe'].setValue('');
+      this.form.controls['medioVerificacionEspe'].setValue('');
+      this.form.controls['resultado'].setValue('');
+      this.form.controls['actividad'].setValue('');
+  }
+
   /* 
   addObjetivos() {
     if (this.detalleObjEspe != undefined && this.indicadorObjEspe != undefined && this.mediosObjEspe != undefined &&
       this.resultadosObjEspe != undefined && this.actividadesObjEspe != undefined && this.detalleObjEspe.length != 0 &&
       this.indicadorObjEspe.length != 0 && this.mediosObjEspe.length != 0 && this.resultadosObjEspe.length != 0 &&
       this.actividadesObjEspe.length != 0) {
+
+
       this.objetivos.push(this.objetivo = {
         detalleObjEspe: this.detalleObjEspe,
         indicadorObjEspe: this.indicadorObjEspe,

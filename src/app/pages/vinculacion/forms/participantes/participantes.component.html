@@ -1,7 +1,7 @@
 <div class="p-grid ui-fluid">
     <p-accordion>
-        <form [formGroup]="form" novalidate>
-            <p-accordionTab header="Docentes">
+        <p-accordionTab header="Docentes">
+            <form [formGroup]="formDocente" novalidate (ngSubmit)="addPartDocen($event)">
                 <div class="p-grid ui-fluid">
                     <div class="p-col-12 p-lg-6">
                         <div class="p-grid">
@@ -40,7 +40,7 @@
                                     placeholder="Funciones asignadas">
                             </div>
                             <div class="p-col-12 p-md-3">
-                                <button (click)="addDoceParti()" pButton type="button" label="Añadir"
+                                <button pButton type="submit" [disabled]="formDocente.invalid" label="Añadir"
                                     icon="pi pi-plus"></button>
                             </div>
                         </div>
@@ -73,8 +73,10 @@
                         </div>
                     </div>
                 </div>
-            </p-accordionTab>
-            <p-accordionTab header="Estudiantes">
+            </form>
+        </p-accordionTab>
+        <p-accordionTab header="Estudiantes">
+            <form [formGroup]="formEstud" novalidate (ngSubmit)="addPartEstud($event)">
                 <div class="p-grid ui-fluid">
                     <div class="p-col-12 p-lg-6">
                         <div class="p-grid">
@@ -111,7 +113,7 @@
                             <div class="p-col-12 p-md-6">
                             </div>
                             <div class="p-col-12 p-md-3">
-                                <button (click)="addEstuParti()" pButton type="button" label="Añadir"
+                                <button pButton type="submit" [disabled]="formEstud.invalid" label="Añadir"
                                     icon="pi pi-plus"></button>
                             </div>
                         </div>
@@ -144,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-            </p-accordionTab>
-        </form>
+            </form>
+        </p-accordionTab>
     </p-accordion>
 </div>

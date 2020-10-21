@@ -19,8 +19,8 @@
             <label for="campo">Campo:</label>
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-autoComplete formControlName="assigned_line" [suggestions]="assignedLines" (completeMethod)="filterAssignedLines($event)" [size]="30"
-                [minLength]="1" [dropdown]="true">
+            <p-autoComplete formControlName="assigned_line" [suggestions]="assignedLines"
+                (completeMethod)="filterAssignedLines($event)" [size]="30" [minLength]="1" [dropdown]="true">
                 <ng-template let-assignedLine pTemplate="item">
                     <div class="ui-helper-clearfix">
                         <div style="font-size:18px;margin:10px 10px 0 0">{{assignedLine}}</div>
@@ -29,8 +29,8 @@
             </p-autoComplete>
         </div>
         <div class="p-col-2 p-sm-6">
-            <p-autoComplete formControlName="campo" [suggestions]="suggestions" (completeMethod)="completeMethod($event)" [size]="30"
-                [minLength]="1" [dropdown]="true">
+            <p-autoComplete formControlName="campo" [suggestions]="suggestions"
+                (completeMethod)="completeMethod($event)" [size]="30" [minLength]="1" [dropdown]="true">
                 <ng-template let-assignedLine pTemplate="item">
                     <div class="ui-helper-clearfix">
                         <div style="font-size:18px;margin:10px 10px 0 0">{{assignedLine}}</div>

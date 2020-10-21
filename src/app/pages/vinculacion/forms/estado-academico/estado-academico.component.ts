@@ -45,7 +45,23 @@ export class EstadoAcademicoComponent implements OnInit {
       )
       .subscribe(value => {
         this.calcularPlazo(value.fechaInicio, value.fechaFinal);
+        this.setModalidad(value.carrer);
       });
+  }
+
+  setModalidad(carrer){
+    this.vinculacionService.get(this.urlcombo).subscribe(
+      response => {
+        const careers = response['career'];
+        careers.forEach(element => {  
+          if (carrer == element.name)
+            this.form.controls['modalidad'].setValue(element.modality);       
+        });
+      },
+      error => {
+        console.log(error);
+      });
+
   }
 
   filterAssignedLines(event) {

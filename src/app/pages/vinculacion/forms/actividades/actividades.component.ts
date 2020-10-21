@@ -13,15 +13,13 @@ export class ActividadesComponent implements OnInit {
   //VARIABLES FORM CONTROL
   form: FormGroup;
 
-  cities: SelectItem[];
-  citiesListbox: SelectItem[];
   fraquencyOfActivities: SelectItem[];
   bondingActivities: SelectItem[];
   bondingActivitiesListbox: SelectItem[];
   linkageAxes: SelectItem[];
   linkageAxesListbox: SelectItem[];
-  research_areas: SelectItem[];
-  research_areasListbox: SelectItem[];
+  researchAreas: SelectItem[];
+  researchAreasListbox: SelectItem[];
   urlcombo = "combo";
 
   constructor(private vinculacionService: VinculacionService,
@@ -30,7 +28,6 @@ export class ActividadesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dropdown();
     this.listbox();
   }
 
@@ -42,24 +39,19 @@ export class ActividadesComponent implements OnInit {
       areasAplicacion: [''],
       descripGeneral: [''],
     });
-
-    this.form.valueChanges
-      .pipe(
-        debounceTime(500)
-      )
-      .subscribe(value => {
-        console.log(value);
-      });
   }
 
-  dropdown() {
+  filterAssignedLines(event) {
     this.vinculacionService.get(this.urlcombo).subscribe(
       response => {
-        this.fraquencyOfActivities = [{ label: 'Seleccione', value: '' }];
+        this.fraquencyOfActivities = [];
         const fraquencyOfActivities = response['fraquencyOfActivity'];
-        fraquencyOfActivities.forEach(mode => {
-          this.fraquencyOfActivities.push({ 'label': mode.name, 'value': mode.id });
-        });
+        for (const item of fraquencyOfActivities) {
+          const brand = item.name;
+          if (brand.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+            this.fraquencyOfActivities.push(brand);
+          }
+        }
       },
       error => {
         console.log(error);
@@ -71,22 +63,22 @@ export class ActividadesComponent implements OnInit {
       response => {
         this.bondingActivities = [{ label: 'Seleccione', value: '' }];
         this.linkageAxes = [{ label: 'Seleccione', value: '' }];
-        this.research_areas = [{ label: 'Seleccione', value: '' }];
+        this.researchAreas = [{ label: 'Seleccione', value: '' }];
         const bondingActivities = response['bondingActivities'];
         const linkageAxes = response['linkageAxes'];
-        const research_areas = response['research_areas'];
+        const researchAreas = response['research_areas'];
         bondingActivities.forEach(bondingActivity => {
           this.bondingActivities.push({ 'label': bondingActivity.name, 'value': bondingActivity.id });
         });
         linkageAxes.forEach(linkageAxe => {
           this.linkageAxes.push({ 'label': linkageAxe.name, 'value': linkageAxe.id });
         });
-        research_areas.forEach(research_area => {
-          this.research_areas.push({ 'label': research_area.name, 'value': research_area.id });
+        researchAreas.forEach(research_area => {
+          this.researchAreas.push({ 'label': research_area.name, 'value': research_area.id });
         });
         this.bondingActivitiesListbox = this.bondingActivities.slice(1);
         this.linkageAxesListbox = this.linkageAxes.slice(1);
-        this.research_areasListbox = this.research_areas.slice(1);
+        this.researchAreasListbox = this.researchAreas.slice(1);
       },
       error => {
         console.log(error);

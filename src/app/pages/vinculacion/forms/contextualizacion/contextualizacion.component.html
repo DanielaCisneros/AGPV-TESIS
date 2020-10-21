@@ -1,5 +1,5 @@
 <p-steps [model]="itemsContex" [(activeIndex)]="activeIndexContex" [readonly]="false"></p-steps>
-<form [formGroup]="form" novalidate>
+<form [formGroup]="form" novalidate (ngSubmit)="addObjEspe($event)">
     <div class="p-col-12 p-lg-12" *ngIf="activeIndexContex==0">
         <div class="p-col-12 p-lg-12">
             <div class="p-grid ui-fluid">
@@ -8,15 +8,15 @@
                         <label for="introduccion">Introducción:</label>
                     </div>
                     <div class="p-col-2">
-                        <textarea formControlName="introduccion" style="width: 500px;" [rows]="5" [cols]="30" pInputTextarea
-                            placeholder="Introducción" autoResize="autoResize"></textarea>
+                        <textarea formControlName="introduccion" style="width: 500px;" [rows]="5" [cols]="30"
+                            pInputTextarea placeholder="Introducción" autoResize="autoResize"></textarea>
                     </div>
                     <div class="p-col-12">
                         <label for="fundamentacion">Fundamentación:</label>
                     </div>
                     <div class="p-col-2">
-                        <textarea formControlName="fundamentacion" style="width: 500px;" [rows]="5" [cols]="30" pInputTextarea
-                            placeholder="Fundamentación" autoResize="autoResize"></textarea>
+                        <textarea formControlName="fundamentacion" style="width: 500px;" [rows]="5" [cols]="30"
+                            pInputTextarea placeholder="Fundamentación" autoResize="autoResize"></textarea>
                     </div>
                 </div>
                 <div class="p-lg-6">
@@ -24,15 +24,16 @@
                         <label for="diagnostico">Analisis situacional (Diagnóstico):</label>
                     </div>
                     <div class="p-col-2">
-                        <textarea formControlName="diagnostico" style="width: 500px;" [rows]="5" [cols]="30" pInputTextarea
-                            placeholder="Analisis situacional (Diagnóstico)" autoResize="autoResize"></textarea>
+                        <textarea formControlName="diagnostico" style="width: 500px;" [rows]="5" [cols]="30"
+                            pInputTextarea placeholder="Analisis situacional (Diagnóstico)"
+                            autoResize="autoResize"></textarea>
                     </div>
                     <div class="p-col-12">
                         <label for="justificaion">Justificaión:</label>
                     </div>
                     <div class="p-col-2">
-                        <textarea formControlName="justificaion" style="width: 500px;" [rows]="5" [cols]="30" pInputTextarea
-                            placeholder="Justificaión" autoResize="autoResize"></textarea>
+                        <textarea formControlName="justificaion" style="width: 500px;" [rows]="5" [cols]="30"
+                            pInputTextarea placeholder="Justificaión" autoResize="autoResize"></textarea>
                     </div>
                 </div>
                 <div class="p-lg-4">
@@ -40,8 +41,8 @@
                         <label for="ObjetivoGenereal">Objetivo general:</label>
                     </div>
                     <div class="p-col-12">
-                        <textarea formControlName="ObjetivoGenereal" [rows]="5" [cols]="30" pInputTextarea placeholder="Objetivo general"
-                            autoResize="autoResize"></textarea>
+                        <textarea formControlName="ObjetivoGenereal" [rows]="5" [cols]="30" pInputTextarea
+                            placeholder="Objetivo general" autoResize="autoResize"></textarea>
                     </div>
                 </div>
                 <div class="p-lg-4">
@@ -49,8 +50,8 @@
                         <label for="indicador">Indicador:</label>
                     </div>
                     <div class="p-col-12">
-                        <textarea formControlName="indicador" [rows]="5" [cols]="30" pInputTextarea placeholder="Indicador"
-                            autoResize="autoResize"></textarea>
+                        <textarea formControlName="indicador" [rows]="5" [cols]="30" pInputTextarea
+                            placeholder="Indicador" autoResize="autoResize"></textarea>
                     </div>
                 </div>
                 <div class="p-lg-4">
@@ -81,7 +82,7 @@
                             <label for="indicador">Indicador:</label>
                         </div>
                         <div class="p-col-10">
-                            <input formControlName="indicador" type="text" pInputText placeholder="Indicador">
+                            <input formControlName="indicadorEspe" type="text" pInputText placeholder="Indicador">
                         </div>
                         <div class="p-col-12">
                             <label for="medioVerificacionEspe">Medio de verificación:</label>
@@ -101,11 +102,11 @@
                             <label for="actividad">Actividad:</label>
                         </div>
                         <div class="p-col-10">
-                            <textarea formControlName="actividad" [rows]="5" [cols]="30"
-                                pInputTextarea placeholder="Actividades" autoResize="autoResize"></textarea>
+                            <textarea formControlName="actividad" [rows]="5" [cols]="30" pInputTextarea
+                                placeholder="Actividades" autoResize="autoResize"></textarea>
                         </div>
                         <div class="p-md-4">
-                            <button (click)="addObjetivos()" pButton type="button" label="Añadir"
+                            <button pButton type="submit" [disabled]="form.invalid" label="Añadir"
                                 icon="pi pi-plus"></button>
                         </div>
                     </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Docente } from 'src/app/models/vinculacion/participantes/docente';
 import { Estudiante } from 'src/app/models/vinculacion/participantes/estudiante';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-participantes',
@@ -11,7 +10,8 @@ import { debounceTime } from 'rxjs/operators';
 export class ParticipantesComponent implements OnInit {
 
   //VARIABLES FORM CONTROL
-  form: FormGroup;
+  formDocente: FormGroup;
+  formEstud: FormGroup;
 
   //TABLA
   tablaDoceParti: any[];
@@ -32,22 +32,17 @@ export class ParticipantesComponent implements OnInit {
   }
 
   private buildForm() {
-    this.form = this.formBuilder.group({
-      docente: [''],
-      cargo: [''],
-      horarioTrabajo: [''],
-      funcionesDocente: [''],
-      estudiante: [''],
-      ciEstudiante: [''],
-      funcionesEstud: [''],
+    this.formDocente = this.formBuilder.group({
+      docente: ['', [Validators.required]],
+      cargo: ['', [Validators.required]],
+      horarioTrabajo: ['', [Validators.required]],
+      funcionesDocente: ['', [Validators.required]],
     });
 
-    this.form.valueChanges
-    .pipe(
-      debounceTime(500)
-    )
-    .subscribe(value => {
-      console.log(value);
+    this.formEstud = this.formBuilder.group({
+      estudiante: ['', [Validators.required]],
+      ciEstudiante: ['1234567'],
+      funcionesEstud: ['', [Validators.required]],
     });
   }
 
@@ -69,33 +64,31 @@ export class ParticipantesComponent implements OnInit {
     ]
   }
 
-  /* 
-  addDoceParti() {
-    if (this.nombreDoceParti != undefined && this.cargoDoceParti != undefined && this.horarioDoceParti != undefined
-      && this.funcionDoceParti != undefined && this.cargoDoceParti.length != 0 && this.horarioDoceParti.length != 0
-      && this.funcionDoceParti.length != 0 && this.nombreDoceParti != 0) {
+  addPartDocen(event: Event) {
+    event.preventDefault();
+      const values = this.formDocente.value;
       this.docentesParticipantes.push(this.docenteParticipante = {
-        nombreDoceParti: this.nombreDoceParti.name,
-        cargoDoceParti: this.cargoDoceParti,
-        horarioDoceParti: this.horarioDoceParti,
-        funcionDoceParti: this.funcionDoceParti
+        nombreDoceParti: values.docente,
+        cargoDoceParti: values.cargo,
+        horarioDoceParti: values.horarioTrabajo,
+        funcionDoceParti: values.funcionesDocente,
       });
-    } else {
-      alert('Porfavor complete todos campos deocentes participantes');
-    }
+      this.formDocente.controls['docente'].setValue('');
+      this.formDocente.controls['cargo'].setValue('');
+      this.formDocente.controls['horarioTrabajo'].setValue('');
+      this.formDocente.controls['funcionesDocente'].setValue('');
   }
 
-  addEstuParti() {
-    if (this.nombreEstuParti != undefined && this.funcionEstuParti != undefined
-      && this.nombreEstuParti != 0 && this.funcionEstuParti.length != 0) {
+  addPartEstud(event: Event) {
+    event.preventDefault();
+      const values = this.formEstud.value;
       this.estudiantesParticipantes.push(this.estudianteParticipante = {
-        nombreEstuParti: this.nombreEstuParti.name,
-        cedulaEstuParti: '012345',
-        funcionEstuParti: this.funcionEstuParti
+        nombreEstuParti: values.estudiante,
+        cedulaEstuParti: values.ciEstudiante,
+        funcionEstuParti: values.funcionesEstud,
       });
-    } else {
-      alert('Porfavor complete todos campos estudiantes participantes');
-    }
-  }*/
-
+      this.formEstud.controls['estudiante'].setValue('');
+      this.formEstud.controls['ciEstudiante'].setValue('');
+      this.formEstud.controls['funcionesEstud'].setValue('');
+  }
 }
